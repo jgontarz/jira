@@ -1,0 +1,168 @@
+fileVersion: 1
+id: 8b4818be-a70f-4d5e-a840-20303b178b43
+name: STG_JIRA__COMMENT_TMP
+operation:
+  config:
+    groupByAll: false
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17c6757e-2641-412a-877e-829d6e40e0a4
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c37fd442-f429-4fc4-b53c-97eac68f39fe
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a802eeaf-8d84-47b6-812f-f933e17822f2
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2fe0cc49-3540-41b2-bba3-d22acad05141
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d61dbfbd-0b90-4ed4-add4-69710802e23c
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: AUTHOR_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 773e547f-af54-470f-abdc-deb5b15c79bd
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5871877b-9bdd-4eb6-aef1-058ce52082fe
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: UPDATE_AUTHOR_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ebdbd146-ff50-4cec-b391-78dd10f2c838
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7cfab40d-e523-4a35-9403-a07f8fd40a30
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: VARCHAR(32768)
+        description: ""
+        name: BODY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87a7c4f2-ff3b-41f3-bec7-8cc0edf17f8e
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 65e24dd0-11da-4da3-962d-fab8bf724cef
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5f3c866d-2602-4b37-a84b-6d74e3d7575a
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 46cd7fe6-79b7-4d25-8159-9ca348ae6602
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 303e3eb1-5be1-42ba-a93c-3dccbcf2ebec
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42f5180f-de3a-4184-b5a6-3c506449c0f4
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: IS_PUBLIC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9582ac3-5770-49e8-935e-301ae487cd71
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17325423-acf6-4a78-871c-09139593dd4e
+          stepCounter: 8b4818be-a70f-4d5e-a840-20303b178b43
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56c59dff-67fc-4fcd-8fd9-cfc15a2fab1c
+                stepCounter: 61336364-2665-4955-8e14-9ffa8dd82643
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: COMMENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'COMMENT') }} "COMMENT"
+        name: STG_JIRA__COMMENT_TMP
+        noLinkRefs: []
+  name: STG_JIRA__COMMENT_TMP
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

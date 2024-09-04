@@ -1,0 +1,95 @@
+fileVersion: 1
+id: b37f57b9-104e-4d89-8d65-73d0b92533e8
+name: STG_JIRA__ISSUE_LINK
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of relationships (links) created between issues. Issue links can include blockers, clones/duplicates, and general relationships.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15398bce-b5c7-4e19-9fb9-6289913be7bd
+          stepCounter: b37f57b9-104e-4d89-8d65-73d0b92533e8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue that is the subject of this relationship (the linker).
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e405f7b-4961-4c7c-9d73-49e084d8bb6f
+                stepCounter: 6aa1ab83-72c3-46b5-88bd-f385c37d6b84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9297663-787f-4ce5-b41c-1941df6fa19d
+          stepCounter: b37f57b9-104e-4d89-8d65-73d0b92533e8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue that is the object of this relationship (the linkee).
+        name: RELATED_ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 85ef82ca-9451-499c-9da1-67b90664a064
+                stepCounter: 6aa1ab83-72c3-46b5-88bd-f385c37d6b84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c79a77d9-c9fa-4f7e-b66d-061e38683298
+          stepCounter: b37f57b9-104e-4d89-8d65-73d0b92533e8
+        config: {}
+        dataType: VARCHAR(256)
+        description: The nature of the link between the two issues ("blocks", "is duplicated by", "relates to", etc.)
+        name: RELATIONSHIP
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a58a5938-7487-4076-a071-796410414b05
+                stepCounter: 6aa1ab83-72c3-46b5-88bd-f385c37d6b84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 724f3c01-a919-4d15-b9d3-a4325878b9f7
+          stepCounter: b37f57b9-104e-4d89-8d65-73d0b92533e8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9cc7ab14-90c9-4ab3-a7b2-c97403d914b9
+                stepCounter: 6aa1ab83-72c3-46b5-88bd-f385c37d6b84
+            transform: "\"STG_JIRA__ISSUE_LINK_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: STG_JIRA__ISSUE_LINK_TMP
+        join:
+          joinCondition: FROM {{ ref('TGT', 'STG_JIRA__ISSUE_LINK_TMP') }} "STG_JIRA__ISSUE_LINK_TMP"
+        name: STG_JIRA__ISSUE_LINK
+        noLinkRefs: []
+  name: STG_JIRA__ISSUE_LINK
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

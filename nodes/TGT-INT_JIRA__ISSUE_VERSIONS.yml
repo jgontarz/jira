@@ -1,0 +1,84 @@
+fileVersion: 1
+id: a40eda68-84ef-45cd-a807-d8c7d0b6492e
+name: INT_JIRA__ISSUE_VERSIONS
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table associating issues with the versions that they fix and/or affect.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7f15ea30-9b6d-4884-88d2-66d98c8a0c6e
+          stepCounter: a40eda68-84ef-45cd-a807-d8c7d0b6492e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: |+
+          Foreign key referencing the issue tagged with these versions.
+
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43648d3c-1abf-4d51-bec0-fa002bf48e86
+                stepCounter: 2cce8a25-fa7c-4ee5-bc42-4b5caf2ba0bf
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ddef8ce-b888-457d-82c7-6ba9e9777336
+          stepCounter: a40eda68-84ef-45cd-a807-d8c7d0b6492e
+        config: {}
+        dataType: VARCHAR(256)
+        description: Comma-separated list of the names of project versions that this issue affects.
+        name: AFFECTS_VERSIONS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ef0ee0a-3012-4cb2-a40d-1a5cc98b5533
+                stepCounter: 2cce8a25-fa7c-4ee5-bc42-4b5caf2ba0bf
+            transform: MAX(CASE WHEN "INT_JIRA__ISSUE_VERSIONS_VERSION_INFO"."FIELD_ID" = 'versions' THEN "INT_JIRA__ISSUE_VERSIONS_VERSION_INFO"."VERSIONS" ELSE NULL END)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1c15b31-0e19-4a7a-8b2a-8d5771601efc
+          stepCounter: a40eda68-84ef-45cd-a807-d8c7d0b6492e
+        config: {}
+        dataType: VARCHAR(256)
+        description: Comma-separated list of the names of project versions that this issue fixes.
+        name: FIXES_VERSIONS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7ef0ee0a-3012-4cb2-a40d-1a5cc98b5533
+                stepCounter: 2cce8a25-fa7c-4ee5-bc42-4b5caf2ba0bf
+            transform: MAX(CASE WHEN "INT_JIRA__ISSUE_VERSIONS_VERSION_INFO"."FIELD_ID" = 'fixVersions' THEN "INT_JIRA__ISSUE_VERSIONS_VERSION_INFO"."VERSIONS" ELSE NULL END)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__ISSUE_VERSIONS_VERSION_INFO: 2cce8a25-fa7c-4ee5-bc42-4b5caf2ba0bf
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_JIRA__ISSUE_VERSIONS_VERSION_INFO
+        join:
+          joinCondition: FROM {{ ref('TGT', 'INT_JIRA__ISSUE_VERSIONS_VERSION_INFO') }} "INT_JIRA__ISSUE_VERSIONS_VERSION_INFO"
+        name: INT_JIRA__ISSUE_VERSIONS
+        noLinkRefs: []
+  name: INT_JIRA__ISSUE_VERSIONS
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

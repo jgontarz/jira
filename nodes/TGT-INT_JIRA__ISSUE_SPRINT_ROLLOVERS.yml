@@ -1,0 +1,67 @@
+fileVersion: 1
+id: 513685b5-4072-48a8-909b-d0150df2b895
+name: INT_JIRA__ISSUE_SPRINT_ROLLOVERS
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 817e9353-7820-4bf2-8bf3-b7747532b260
+          stepCounter: 513685b5-4072-48a8-909b-d0150df2b895
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f14e203-461a-455e-93ba-72cc509ad695
+                stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7dff9b03-2267-4c11-84ec-2450a6bc9015
+          stepCounter: 513685b5-4072-48a8-909b-d0150df2b895
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_SPRINT_CHANGES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a3d54ada-95c8-46d7-bf04-1745573ec468
+                stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+            transform: COUNT(DISTINCT CASE WHEN "INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY"."FIELD_VALUE" IS NOT NULL THEN "INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY"."FIELD_VALUE" END)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY
+        join:
+          joinCondition: FROM {{ ref('TGT', 'INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY') }} "INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY"
+        name: INT_JIRA__ISSUE_SPRINT_ROLLOVERS
+        noLinkRefs: []
+  name: INT_JIRA__ISSUE_SPRINT_ROLLOVERS
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

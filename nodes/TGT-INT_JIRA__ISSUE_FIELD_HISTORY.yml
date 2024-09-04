@@ -1,0 +1,120 @@
+fileVersion: 1
+id: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+name: INT_JIRA__ISSUE_FIELD_HISTORY
+operation:
+  config:
+    groupByAll: false
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Table of every value that each custom non-array (not multiselect) field has been set to. This model serves to append the field_name to each record.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89f73c0b-8cf8-4f9c-89f5-9557d765de7e
+          stepCounter: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+        config: {}
+        dataType: STRING
+        description: Foreign key referencing the ID of the field that was changed.
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32d3efb2-8617-4e17-a519-9b057fdc37fb
+                stepCounter: 7430a382-a0fa-4397-9c86-6ef9add77443
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 025387cb-9c84-4716-9a6a-76103b3b5641
+          stepCounter: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue whose field was updated.
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: dc5ef313-ce00-4022-8030-e508a50db9c3
+                stepCounter: 89de661e-3d43-47c2-ba41-a1943f64e877
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 46631d42-899d-47ef-af4b-2c6fea2778ee
+          stepCounter: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: Timestamp of when the issue field was set to this value.
+        name: UPDATED_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 039fa40d-8074-455f-96de-175adff77027
+                stepCounter: 89de661e-3d43-47c2-ba41-a1943f64e877
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e79152ca-633c-4ee7-9065-fa38060748a4
+          stepCounter: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+        config: {}
+        dataType: VARCHAR(32768)
+        description: Content of the value of that the field was set to.
+        name: FIELD_VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 075e7d1d-be7d-4ca9-b174-d81f9eea4c0d
+                stepCounter: 89de661e-3d43-47c2-ba41-a1943f64e877
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1149ad2-4afc-4c51-8a45-1a30ab2663ea
+          stepCounter: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
+        config: {}
+        dataType: VARCHAR(256)
+        description: Name of the field as it appears on issue cards.
+        name: FIELD_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eb9d200b-d5ef-4c14-a0ee-bc7c07e5dcc2
+                stepCounter: 7430a382-a0fa-4397-9c86-6ef9add77443
+            transform: lower("STG_JIRA__FIELD"."FIELD_NAME")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_JIRA__FIELD: 7430a382-a0fa-4397-9c86-6ef9add77443
+          STG_JIRA__ISSUE_FIELD_HISTORY: 89de661e-3d43-47c2-ba41-a1943f64e877
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: STG_JIRA__FIELD
+          - locationName: TGT
+            nodeName: STG_JIRA__ISSUE_FIELD_HISTORY
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'STG_JIRA__ISSUE_FIELD_HISTORY') }} "STG_JIRA__ISSUE_FIELD_HISTORY"
+            JOIN {{ ref('TGT', 'STG_JIRA__FIELD') }} "STG_JIRA__FIELD"
+            ON "STG_JIRA__ISSUE_FIELD_HISTORY"."FIELD_ID" = "STG_JIRA__FIELD"."FIELD_ID"
+        name: INT_JIRA__ISSUE_FIELD_HISTORY
+        noLinkRefs: []
+  name: INT_JIRA__ISSUE_FIELD_HISTORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

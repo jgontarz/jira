@@ -1,0 +1,168 @@
+fileVersion: 1
+id: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+name: INT_COMBINE_FIELD_HISTORY
+operation:
+  config:
+    groupByAll: false
+    insertStrategy: UNION ALL
+    orderby: false
+    orderbycolumn:
+      items:
+        - {}
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: true
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c566d87-67c5-4d2d-9a1e-5c3eccf61bb5
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2fe6a315-fc61-4015-a886-8e8da620f4c6
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: 669ca0ca-a6aa-4890-8f54-89fd11e29c61
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b19013cf-7ec4-4b83-9f69-07ce83927a4a
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: FIELD_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be947770-6c75-4121-8e7f-01c3f43b76c2
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: e0c89d8d-919c-4a16-8cd3-8f918b84e499
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 56a21a5f-98b0-49c9-9008-b05c153b2d7f
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c2900858-7199-43c7-90a6-aa270c430c3d
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: 628085e5-35b4-40ef-9e72-0e1cc57b8db1
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87358929-242b-4fca-a32c-a5b582753941
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: UPDATED_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 26a0bc98-d220-430f-bdbe-91037ce38c1b
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: c01a170a-590a-4b71-b0ec-204dd9b5c09d
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 67cbebbd-5d87-4f15-bf10-3315c9856dac
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_DAY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: efb419b9-76f9-419e-81ff-ab7878f49ffc
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: 7d48e372-63bb-4cbb-a783-12c263612644
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 96d28e89-ba2e-4f77-a07a-2cf77beac9e8
+          stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 776e822a-42ec-42d0-9ad7-296b79745fd0
+                stepCounter: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+            transform: ""
+          - columnReferences:
+              - columnCounter: 74adc3d2-f1b5-46b5-8e89-05dfa1e240e0
+                stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_ISSUE_FIELD_HISTORY: 1d4fc8cb-30b2-4a32-b3de-d5cad515d758
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_ISSUE_FIELD_HISTORY
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'INT_ISSUE_FIELD_HISTORY') }} "INT_ISSUE_FIELD_HISTORY"
+        name: ISSUE_FIELD_HISTORY
+        noLinkRefs: []
+      - aliases:
+          INT_ISSUE_MULTISELECT_BATCH_HISTORY: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_ISSUE_MULTISELECT_BATCH_HISTORY
+        join:
+          joinCondition: |
+            FROM {{ ref('TGT', 'INT_ISSUE_MULTISELECT_BATCH_HISTORY') }} "INT_ISSUE_MULTISELECT_BATCH_HISTORY"
+        name: ISSUE_MULTISELECT_BATCH_HISTORY
+        noLinkRefs: []
+  name: INT_COMBINE_FIELD_HISTORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

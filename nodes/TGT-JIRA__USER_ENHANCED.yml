@@ -1,0 +1,303 @@
+fileVersion: 1
+id: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+name: JIRA__USER_ENHANCED
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of users enriched with their projects, and the volume and velocity of their issues.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20a79e1a-738a-4bd8-8704-56d2e785dbc7
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: Email associated with the user acccount.
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bfdf42c2-347b-418b-b677-2621b1b2473e
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aa0d2266-6c1f-4531-9b69-027b6f955ffb
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: Unique ID of the user.
+        name: USER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 267f5040-a3a3-44cf-a92a-302ce980f4c3
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e8623d1-afa7-4d96-b51d-b87728096e5d
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: The Java locale of the user.
+        name: LOCALE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37ffd60d-b22e-41f5-b10f-cebad9937f7c
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 903fa4b4-9a22-4cbe-9f95-8f02e005f687
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: Name of the user as it appears in the UI.
+        name: USER_DISPLAY_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3521ece4-b752-47c8-aec6-54b8c7bac148
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12d180dc-f938-41b4-864a-cde6ca7ca181
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: The user's timezone, as defined in their settings.
+        name: TIME_ZONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be6589d0-6f67-49e9-8850-dd80a4596eeb
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31fdf448-7b84-49e6-9f9e-567043a37917
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: Account username.
+        name: USERNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4571c356-b2fb-4e0c-b62c-8abde70f7192
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b99e735e-8da2-465c-8440-6cef3d397033
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af834b8e-966e-4486-8e37-a3c8fb2507c3
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 925f969d-0b45-4a0c-8983-eae6a524d8c6
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: VARCHAR(256)
+        description: Comma-separated list of projects on which the user has been assigned to.
+        name: PROJECTS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8252a8b0-1272-44b7-a757-ad53aa384d6a
+                stepCounter: a7dfcf6b-07a9-4024-ad12-8b7ccb5bc344
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d68a1e1c-5650-4063-9fad-749dbcb0ccf8
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The number of issues that the user has closed (while being assigned to).
+        name: COUNT_CLOSED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b22dd7c0-42ed-47a8-9d5d-084ecfb42025
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: coalesce("INT_JIRA__USER_METRICS_ISSUES"."COUNT_CLOSED_ISSUES", 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 995091fa-63f3-4886-b8d3-36a2b6eb5887
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The number of currently open issues that the user is assigned to.
+        name: COUNT_OPEN_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6dfb9d18-b6c7-4254-9cb9-c360b140be5f
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: coalesce("INT_JIRA__USER_METRICS_ISSUES"."COUNT_OPEN_ISSUES", 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a86f0845-c5c5-498e-9f07-5f4790609c9e
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues since assignment, in days.
+        name: AVG_CLOSE_TIME_DAYS
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea73f4da-37f2-45ad-a933-11ab2c09a217
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 24328ca5-b848-44cf-87a3-c0728a415bf1
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The average age of a user's currently open issues.
+        name: AVG_AGE_CURRENTLY_OPEN_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d2ed0f77-f25f-4b4a-b019-f65ada594bba
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2cccd5e5-5bb0-4c61-a6ba-f00385d8e0c3
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues since assignment, in days.
+        name: MEDIAN_CLOSE_TIME_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e4dd5d31-5df7-4e12-a082-c737e91f4573
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 911912f5-b060-4142-a1ec-6a07a6dbb1f0
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The median age of a user's currently open issues.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 297877be-4814-4f10-b447-bf559fca9523
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd6f9d0a-7cae-4115-ab16-f770b82311a9
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues since assignment, in seconds.
+        name: AVG_CLOSE_TIME_SECONDS
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b52c6f10-ab65-40f6-b444-95779df276d3
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ed7f523-4da0-4ae8-8a92-d48d54869f64
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The average age of a user's currently open issues.
+        name: AVG_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0870f36-fb42-4ebe-8cb7-0abc4294876d
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3f5fe15-b50f-4599-bf3d-72dffa13788d
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues since assignment, in seconds.
+        name: MEDIAN_CLOSE_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 981f7d7c-16a3-490b-8623-7f310f7a1b0a
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0d2bc7b-cc3c-4e38-88d6-68fdbb828042
+          stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+        config: {}
+        dataType: NUMBER
+        description: The median age of a user's currently open issues.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 05f48891-1201-4334-a6db-0b4f141a9aff
+                stepCounter: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__USER_METRICS_ISSUES: 24aaba8f-c45a-4692-ab4f-4e33add57e62
+          INT_JIRA__USER_PROJECTS_ENHANCED: a7dfcf6b-07a9-4024-ad12-8b7ccb5bc344
+          STG_JIRA__USER: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_JIRA__USER_METRICS_ISSUES
+          - locationName: TGT
+            nodeName: INT_JIRA__USER_PROJECTS_ENHANCED
+          - locationName: TGT
+            nodeName: STG_JIRA__USER
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'STG_JIRA__USER') }} "STG_JIRA__USER"
+            LEFT JOIN {{ ref('TGT', 'INT_JIRA__USER_PROJECTS_ENHANCED') }} "INT_JIRA__USER_PROJECTS_ENHANCED"
+            ON "STG_JIRA__USER"."USER_ID" = "INT_JIRA__USER_PROJECTS_ENHANCED"."ASSIGNEE_USER_ID"
+            LEFT JOIN {{ ref('TGT', 'INT_JIRA__USER_METRICS_ISSUES') }} "INT_JIRA__USER_METRICS_ISSUES"
+            ON "STG_JIRA__USER"."USER_ID" = "INT_JIRA__USER_METRICS_ISSUES"."USER_ID"
+        name: JIRA__USER_ENHANCED
+        noLinkRefs: []
+  name: JIRA__USER_ENHANCED
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

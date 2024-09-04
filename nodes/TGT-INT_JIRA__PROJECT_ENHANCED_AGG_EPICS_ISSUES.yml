@@ -1,0 +1,70 @@
+fileVersion: 1
+id: c36a01cd-c804-4fd2-993a-15355dfa4a15
+name: INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1f9f2fd9-9492-476a-8684-980221350f3c
+          stepCounter: c36a01cd-c804-4fd2-993a-15355dfa4a15
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a78d18e4-93b7-48f6-852e-8b71c9b0beea
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 43335fad-b466-4eef-a197-4d6aa6b0f893
+          stepCounter: c36a01cd-c804-4fd2-993a-15355dfa4a15
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: EPICS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b333af91-c5cc-4d93-a0c9-877c08e485db
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: LISTAGG("JIRA__ISSUE_ENHANCED"."ISSUE_NAME", ', ')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JIRA__ISSUE_ENHANCED: daaa0244-7a3b-413b-998c-a9101e6595e6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__ISSUE_ENHANCED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'JIRA__ISSUE_ENHANCED') }} "JIRA__ISSUE_ENHANCED"
+            WHERE LOWER("JIRA__ISSUE_ENHANCED"."ISSUE_TYPE") = 'epic'
+        name: INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES
+        noLinkRefs: []
+  name: INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

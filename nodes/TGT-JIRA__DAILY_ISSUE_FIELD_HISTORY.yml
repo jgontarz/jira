@@ -1,0 +1,142 @@
+fileVersion: 1
+id: 0893faa0-9efc-43b0-b754-41a37693f312
+name: JIRA__DAILY_ISSUE_FIELD_HISTORY
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    orderby: false
+    postSQL: null
+    preSQL: null
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "Each record represents a snapshot of an issue's selected fields (as specified in the issue_history_columns variable + sprint and status by default) on a given day. Each issue will have a record for every day in which it was open and/or being updated. For currently open issues, the latest date will be the current date, and for closed issues, this will be the last time the issue was resolved OR updated in any way (plus a configurable buffer afterward, set to a month by default). Note: this is an incremental model."
+  isMultisource: false
+  locationName: TGT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 016538ba-9b4d-478e-96c4-f1bc63bfc295
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: DATE
+        description: Date on which the issue had these field values.
+        name: DATE_DAY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eab6c9e3-0f68-497f-a9c5-0f7513832aeb
+                stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2bb507d-9286-4c85-9159-a80e5e54400e
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue with these values.
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0163a055-1472-483d-9219-0a6d16c2a933
+                stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90a0ceea-66e3-49b8-bee8-4c3d00ed44ca
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: VARCHAR(256)
+        description: The name of the status that an issue has on a given day.
+        name: STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 295e4afb-fbec-40c2-9dab-48e64dc66975
+                stepCounter: 17a9008c-7db2-4387-b499-763428e84be0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b7cff72-9f32-47f6-b491-4491e0bbbec4
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: STRING
+        description: The ID of the status that an issue has on a given day.
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4f085f26-c739-42ba-8ef3-02ae5b76a24a
+                stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+            transform: case when "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."STATUS_ID" = 'is_null' then null else "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."STATUS_ID" end
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff691a82-b14c-4919-b410-2466565dc165
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: STRING
+        description: The ID of the sprint that an issue is slotted into on a given day.
+        name: SPRINT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cf92bec6-ca19-4a88-9243-81da23134641
+                stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+            transform: case when "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."SPRINT" = 'is_null' then null else "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."SPRINT" end
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5df293c7-6cd9-4bb2-82da-51b80b3fa57b
+          stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: Surrogate key hashed on date_day and issue_id
+        hashDetails:
+          hashAlgorithm: SHA1
+        hashedColumns:
+          - columnCounter: 016538ba-9b4d-478e-96c4-f1bc63bfc295
+            stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+          - columnCounter: f2bb507d-9286-4c85-9159-a80e5e54400e
+            stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+        name: ISSUE_DAY_ID
+        nullable: true
+        sourceColumnReferences: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+          STG_JIRA__STATUS: 17a9008c-7db2-4387-b499-763428e84be0
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES
+          - locationName: TGT
+            nodeName: STG_JIRA__STATUS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES') }} "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"
+            LEFT JOIN {{ ref('TGT', 'STG_JIRA__STATUS') }} "STG_JIRA__STATUS"
+            ON "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."STATUS_ID" = "STG_JIRA__STATUS"."STATUS_ID"
+        name: JIRA__DAILY_ISSUE_FIELD_HISTORY
+        noLinkRefs: []
+  name: JIRA__DAILY_ISSUE_FIELD_HISTORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::204
+  type: sql
+  version: 1
+type: Node

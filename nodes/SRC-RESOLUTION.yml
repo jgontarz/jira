@@ -1,0 +1,96 @@
+fileVersion: 1
+id: 9770c856-869d-428d-b690-959fd40906f3
+name: RESOLUTION
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: SRC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac7e04c4-fe76-4489-b74d-eb5dd2d6d62d
+          stepCounter: 9770c856-869d-428d-b690-959fd40906f3
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6b6eb70-3e66-4919-99ce-f70c4a23df90
+          stepCounter: 9770c856-869d-428d-b690-959fd40906f3
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 726823d8-1e27-4a9e-9e9c-6a3bd540dee9
+          stepCounter: 9770c856-869d-428d-b690-959fd40906f3
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 49b5a9af-7c23-4cb8-aa09-51e8d7fc813a
+          stepCounter: 9770c856-869d-428d-b690-959fd40906f3
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('SRC', 'RESOLUTION') }}
+  name: RESOLUTION
+  schema: ""
+  sqlType: Source
+  table: RESOLUTION
+  type: sourceInput
+  version: 1
+type: Node

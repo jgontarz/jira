@@ -1,0 +1,68 @@
+fileVersion: 1
+id: a7dfcf6b-07a9-4024-ad12-8b7ccb5bc344
+name: INT_JIRA__USER_PROJECTS_ENHANCED
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e8b30a9-f0dd-48f5-852b-4104b4d073ed
+          stepCounter: a7dfcf6b-07a9-4024-ad12-8b7ccb5bc344
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: ASSIGNEE_USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eed0dca6-544c-44ce-b7e0-285d6c1e5a0c
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8252a8b0-1272-44b7-a757-ad53aa384d6a
+          stepCounter: a7dfcf6b-07a9-4024-ad12-8b7ccb5bc344
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: PROJECTS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1da54817-bd74-40f7-a617-237924a8de19
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: listagg(distinct "JIRA__ISSUE_ENHANCED"."PROJECT_NAME", ', ')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JIRA__ISSUE_ENHANCED: daaa0244-7a3b-413b-998c-a9101e6595e6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__ISSUE_ENHANCED
+        join:
+          joinCondition: FROM {{ ref('TGT', 'JIRA__ISSUE_ENHANCED') }} "JIRA__ISSUE_ENHANCED"
+        name: INT_JIRA__USER_PROJECTS_ENHANCED
+        noLinkRefs: []
+  name: INT_JIRA__USER_PROJECTS_ENHANCED
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

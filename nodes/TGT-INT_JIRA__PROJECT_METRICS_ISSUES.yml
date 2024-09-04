@@ -1,0 +1,326 @@
+fileVersion: 1
+id: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+name: INT_JIRA__PROJECT_METRICS_ISSUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table calculating issue-related metrics per project.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 28e8745b-df37-4e03-b6ef-262eb20be77c
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unique ID of the project.
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c4af3bbf-813a-4729-81bc-48c3a98956a3
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5020f60f-8d22-40e6-9d67-0a6679ac7db0
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The number of issues closed in this project.
+        name: COUNT_CLOSED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e10c12b-4609-4b4b-a9fb-ebb1eebac44f
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a166cb9a-1b8d-40c5-9527-eca8153e05f7
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The number of currently un-resolved issues in the project.
+        name: COUNT_OPEN_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5a3b0a9-b73b-4299-b392-091f460bd70b
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9713dab1-f995-4e47-b1f5-566001fbc022
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The number of currently open and currently assigned issues in the project.
+        name: COUNT_OPEN_ASSIGNED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 39084ad9-3f50-43ce-b515-1a7d00ac6cc8
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8550e821-862f-41c8-b6cf-344fa2652771
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues, in seconds.
+        name: AVG_CLOSE_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2a6b452-49fc-4a35-8c9a-76c8aecc6357
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad90a3a7-9ffd-413e-9a64-43e2e037aa29
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues from their first assignment, in seconds.
+        name: AVG_ASSIGNED_CLOSE_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 88529da8-ddcd-4acc-927f-501b609f2c13
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e30577c1-ce7b-4431-ae30-f46ac744509d
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average age of any currently-open issues.
+        name: AVG_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3b83cab8-e526-443a-85c7-dec767c9caf9
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 290814f2-5478-4431-b051-86240b88a222
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average age of any currently-open issues, from their first assignment.
+        name: AVG_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f8baf670-1593-45d1-9582-ea6e7c603af8
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ced3dbb7-4526-4c6b-8d96-db7c98246eeb
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues, in seconds.
+        name: MEDIAN_CLOSED_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20f0752b-80be-4aae-8684-6eb8fdb270c2
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a08c9cf-558a-4813-95b8-98b6caadd8d3
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median age of any currently-open issues.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fd61de12-8aa6-4514-a921-bd258c4cbd7e
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 10cf4568-1ee0-4508-a71c-228661042012
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues from their first assignment, in seconds.
+        name: MEDIAN_ASSIGNED_CLOSED_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d1d39623-9717-43e7-b229-df72aeb016c2
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 856d73af-4079-43de-ac05-3339d2eb20f2
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median age of any currently-open issues, from their first assignment.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea71b93c-c081-42fc-a7b9-1a7cfa5bb2a6
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7c9892e0-6c68-4997-adb5-fc76ea31e728
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues, in days.
+        name: AVG_CLOSE_TIME_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2a6b452-49fc-4a35-8c9a-76c8aecc6357
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ROUND(CAST("INT_JIRA__PROJECT_AVG_METRICS_ISSUES"."AVG_CLOSE_TIME_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7761ded3-84f4-4a0c-8a95-0c90f1d958e1
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average time taken to close issues from their first assignment, in days.
+        name: AVG_ASSIGNED_CLOSE_TIME_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 88529da8-ddcd-4acc-927f-501b609f2c13
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ROUND(CAST("INT_JIRA__PROJECT_AVG_METRICS_ISSUES"."AVG_ASSIGNED_CLOSE_TIME_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ed91f51-4f4f-4708-b50e-ed09e4f5fa8c
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average age of any currently-open issues.
+        name: AVG_AGE_CURRENTLY_OPEN_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3b83cab8-e526-443a-85c7-dec767c9caf9
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ROUND(CAST("INT_JIRA__PROJECT_AVG_METRICS_ISSUES"."AVG_AGE_CURRENTLY_OPEN_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e5150a2-5f07-48e1-91dc-09f4ed1acf8d
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The average age of any currently-open issues, from their first assignment.
+        name: AVG_AGE_CURRENTLY_OPEN_ASSIGNED_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f8baf670-1593-45d1-9582-ea6e7c603af8
+                stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+            transform: ROUND(CAST("INT_JIRA__PROJECT_AVG_METRICS_ISSUES"."AVG_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5245f45-a830-4ecd-a873-b42f81860a59
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues, in days.
+        name: MEDIAN_CLOSED_TIME_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20f0752b-80be-4aae-8684-6eb8fdb270c2
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ROUND(CAST("INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"."MEDIAN_CLOSED_TIME_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88d60a84-ac8b-48bc-9198-8ff62bb4e543
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median age of any currently-open issues.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fd61de12-8aa6-4514-a921-bd258c4cbd7e
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ROUND(CAST("INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"."MEDIAN_AGE_CURRENTLY_OPEN_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be4fcfba-4a8f-4404-84e7-480a8aeca6e2
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median time taken to close issues from their first assignment, in days.
+        name: MEDIAN_ASSIGNED_CLOSED_TIME_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d1d39623-9717-43e7-b229-df72aeb016c2
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ROUND(CAST("INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"."MEDIAN_ASSIGNED_CLOSED_TIME_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ba14d931-c3c1-4ebf-950f-f9c54e479f6f
+          stepCounter: 8b9e8d5c-1084-40ee-83a5-c97eb4335ed8
+        config: {}
+        dataType: NUMBER
+        description: The median age of any currently-open issues, from their first assignment.
+        name: MEDIAN_AGE_CURRENTLY_OPEN_ASSIGNED_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ea71b93c-c081-42fc-a7b9-1a7cfa5bb2a6
+                stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+            transform: ROUND(CAST("INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"."MEDIAN_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS" / 86400.0 AS NUMERIC(28,6)), 0)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__PROJECT_AVG_METRICS_ISSUES: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+          INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES: 7c29b732-9893-472a-bef2-18ea16521f09
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: INT_JIRA__PROJECT_AVG_METRICS_ISSUES
+          - locationName: TGT
+            nodeName: INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'INT_JIRA__PROJECT_AVG_METRICS_ISSUES') }} "INT_JIRA__PROJECT_AVG_METRICS_ISSUES"
+            LEFT JOIN {{ ref('TGT', 'INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES') }} "INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"
+            ON "INT_JIRA__PROJECT_AVG_METRICS_ISSUES"."PROJECT_ID" = "INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES"."PROJECT_ID"
+        name: INT_JIRA__PROJECT_METRICS_ISSUES
+        noLinkRefs: []
+  name: INT_JIRA__PROJECT_METRICS_ISSUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

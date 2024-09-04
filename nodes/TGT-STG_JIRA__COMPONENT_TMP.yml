@@ -1,0 +1,109 @@
+fileVersion: 1
+id: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+name: STG_JIRA__COMPONENT_TMP
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fca0b7d0-e2b8-4e82-bb6e-9bc0018af5ad
+          stepCounter: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: de1b3888-ed0f-4f76-8b45-916183bec26b
+                stepCounter: b722495a-664f-4233-a81f-24d050f653e9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 87c4d34c-02b1-4efd-a175-4a9d1f6826db
+          stepCounter: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5c2c394c-220b-4c97-b397-8e8e2af83ed2
+                stepCounter: b722495a-664f-4233-a81f-24d050f653e9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39c67249-c57b-4a97-8d75-220abf331b40
+          stepCounter: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 016da6ab-268b-4674-a1d7-66bb682666df
+                stepCounter: b722495a-664f-4233-a81f-24d050f653e9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3634941-48d4-42b7-b834-52e57338aa93
+          stepCounter: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e9a91cf3-6184-441f-a7c1-9bd6882266fb
+                stepCounter: b722495a-664f-4233-a81f-24d050f653e9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0058d95-ea6a-4365-b2ce-42b3b944ad31
+          stepCounter: 86b5c4fc-b37f-4b4b-929b-2654e64ee8c4
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: deeacde6-5974-47f6-bf46-9705ab6d5442
+                stepCounter: b722495a-664f-4233-a81f-24d050f653e9
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: COMPONENT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'COMPONENT') }} "COMPONENT"
+        name: STG_JIRA__COMPONENT_TMP
+        noLinkRefs: []
+  name: STG_JIRA__COMPONENT_TMP
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,165 @@
+fileVersion: 1
+id: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+name: STG_JIRA__PROJECT
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of all projects in your organization.
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4a920366-2961-468f-8b85-b0889ab69d11
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: VARCHAR(256)
+        description: Description of the project, if given.
+        name: PROJECT_DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6593bcf-2b9c-4420-b036-c78e31785c9b
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c52cca9-40c2-4e84-a5e0-75f247138057
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unique ID of the project.
+        name: PROJECT_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20f149b8-6b3d-4755-8516-1b3ca102e1fd
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c7278f1b-bc61-41de-8c2c-b8f61259f8bb
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: VARCHAR(256)
+        description: UI-facing ID of the project. This becomes the default prefix for tasks created within this project.
+        name: PROJECT_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4cc7f96e-f9a0-4cda-8a31-e2c4157a1aa0
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6ff7481d-06d3-4911-97ef-2824ba869930
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: VARCHAR(256)
+        description: Foreign key referencing the ID of the user who leads this project.
+        name: PROJECT_LEAD_USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d65cbf09-5130-4b76-8ddb-1ad795dc0c5f
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3554b7cd-07d1-4239-900c-abb8217d8dea
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: VARCHAR(256)
+        description: Title of the project.
+        name: PROJECT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5a1f1c6c-62b6-41a9-bdac-60aba325f837
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40ce2943-fbdf-4704-9964-8441df8800b2
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the project_category that the project is associated with, if any.
+        name: PROJECT_CATEGORY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 58105be0-60ea-4837-b179-e50d0c4773bd
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c907f537-abfb-4b8c-b484-2c7e9658925c
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the permission_scheme that the project ascribes to.
+        name: PERMISSION_SCHEME_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3956b74b-25ed-41ad-81bc-9bb6d5a4385f
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc05e1d4-1385-4692-b30a-55c8d5fa08c5
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 18bcc422-d4f9-4815-bd5d-6f4ac13d7cbd
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60680784-644b-4dcd-b8da-3e18c305ae04
+          stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 899d66dc-c4a0-4777-a7da-e71459831487
+                stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: STG_JIRA__PROJECT_TMP
+        join:
+          joinCondition: FROM {{ ref('TGT', 'STG_JIRA__PROJECT_TMP') }} "STG_JIRA__PROJECT_TMP"
+        name: STG_JIRA__PROJECT
+        noLinkRefs: []
+  name: STG_JIRA__PROJECT
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node
