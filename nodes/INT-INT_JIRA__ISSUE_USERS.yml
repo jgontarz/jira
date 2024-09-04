@@ -1,0 +1,546 @@
+fileVersion: 1
+id: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+name: INT_JIRA__ISSUE_USERS
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table relating issues to attributes about their assignees and reporters. Builds off of the int_jira__issue_type_parents model.
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 131553a6-5ef3-4a9f-8f96-6c323bebc507
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: |+
+          Unique ID of the issue.
+
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b129a9a0-da56-4ff2-88ea-06901e0a37ee
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca2f6b03-6141-4397-97f6-26925bf0565a
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: User display name of the person currently assigned this issue.
+        name: ASSIGNEE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5d37d2aa-f797-4fd6-989a-4b3d43f446f9
+                stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f37c298b-33ba-4fbd-aca1-a505b087cb40
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: User display name of the person who reported the issue.
+        name: REPORTER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 34be165c-7029-4e52-8b15-5b69e5c1e7e6
+                stepCounter: 72c6fb1d-e0f5-4f3c-874d-a48f8071f984
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4354fd9-0cff-4f25-81a3-afbad07d78c2
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Timezone of the user currently assigned this issue.
+        name: ASSIGNEE_TIME_ZONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02cc2d27-4b3f-4ce9-8ad2-c069f6d1d3fe
+                stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 472cd441-f949-490e-a2a8-03b08c8a0fc3
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Email associated with the user currently assigned this issue.
+        name: ASSIGNEE_EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 50f1fbf9-5df1-43f1-b692-da9ef5acd234
+                stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f016d3c-a7d8-42f5-a843-2b7a03f3cece
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Email associated with the user who reported this issue.
+        name: REPORTER_EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d00fc211-514d-48aa-98bc-88e75ca7faa7
+                stepCounter: 72c6fb1d-e0f5-4f3c-874d-a48f8071f984
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d2d2c8f-d25f-473e-9775-3a9daadbac79
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Timezone of the user currently who reported this issue.
+        name: REPORTER_TIME_ZONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5b75a116-66a8-489e-a9d5-1cfeb4129a0e
+                stepCounter: 72c6fb1d-e0f5-4f3c-874d-a48f8071f984
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a135cb8b-03d3-4c38-a4ee-f3cb1be2ca68
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unique ID of the parent issue.
+        name: PARENT_ISSUE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a131c200-72e1-4c9a-8aeb-8dfece5d66fa
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: coalesce(cast("INT_JIRA__ISSUE_TYPE_PARENTS"."REVISED_PARENT_ISSUE_ID" as TEXT), cast("INT_JIRA__ISSUE_TYPE_PARENTS"."PARENT_ISSUE_ID" as TEXT))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b9ee27f-a0cc-4484-bcc5-6eb93aa28474
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Name of the issue type (ie Epic, Task, Subtask, any custom types).
+        name: ISSUE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 834ebfb2-ea77-492f-acc3-b1a12814a732
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f286c46-f744-4ddd-a08a-4620933e6008
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Title of the issue.
+        name: ISSUE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2f71905-b957-4156-850e-263d03d87b98
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 054179d9-ae97-42a0-86ad-d4dce88fe330
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: UI-facing id of the issue.
+        name: ISSUE_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 754e7e72-be33-4ad9-99e8-8fefd34b40be
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d549947c-f1e0-4802-9558-b27f3b953380
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Name of the parent issue type (ie Epic, Task, Subtask, any custom types).
+        name: PARENT_ISSUE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1d090866-dac2-4ab4-9255-161b57462c34
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89353ab6-f7de-475b-a5d4-056adcbdbf40
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Title of the parent issue.
+        name: PARENT_ISSUE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7a41fd89-1b90-4ffa-8590-d32d06273ca4
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3fbb925-1ef0-4e19-83e7-0f7ec299c3c0
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: UI-facing id of the parent issue.
+        name: PARENT_ISSUE_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1083bf20-42b4-4ad4-b11e-4baba58c74b8
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d8ead7c-cee8-4908-b5a3-9a9ef1d29401
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: BOOLEAN
+        description: Boolean that is true if the parent is an epic.
+        name: IS_PARENT_EPIC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 41aa0a43-8646-4179-b4c0-7350cb76c3d5
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c32cd6b6-a32f-4547-9593-c6b3cf4572e5
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Foreign key referencing the ID of the user currently assigned to this task.
+        name: ASSIGNEE_USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 417eaf15-f693-4567-9e94-0b97dcdcf4c2
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c8bb7e6-878a-4a90-bf89-218dd2af5c98
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: Timestamp of when the issue was created (in UTC).
+        name: CREATED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0be311f-2e3e-409f-9444-e12c0276c578
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca8ca2fe-077f-4075-95cf-3943dbfcc692
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Foreign key referencing the user who first created the issue. Cannot be changed.
+        name: CREATOR_USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 51d55889-0d5a-4beb-94a6-72339a5b19f2
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6091b1af-9442-4710-bffd-b8a202820463
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(32768)
+        description: The issue description, if given.
+        name: ISSUE_DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1b874f6a-f0fb-445d-b4b2-387a0ee1bd6b
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cedc0399-decd-42d0-9272-6d529169297e
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: DATE
+        description: Calendar day on which the issue is due, if a due date is provided.
+        name: DUE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8f803c0-4d1d-4626-a661-b8edbd706e77
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16085b7a-03bd-444d-b5ac-8b6495330e26
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(2048)
+        description: Text field describing the environment in which the issue occurred (ie "IE9 on Windows 7").
+        name: ENVIRONMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4beb55bc-635b-47f5-955c-e3b4b2b7e7d0
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c63b433-d166-402f-a5b7-a9bdad23e730
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue_type.
+        name: ISSUE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c29d6b50-591d-4c95-a87c-7b76be99f09d
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11a04e32-d37f-4387-b8e9-0d817f1c4cb0
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: FLOAT
+        description: The original estimate of how long working on this issue would take, in seconds.
+        name: ORIGINAL_ESTIMATE_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49553256-e15e-4c31-ad9a-edd419a2fa86
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a329feca-dbde-4e93-bcc5-baf3e11fff59
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue's current priority.
+        name: PRIORITY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 81040876-31d4-4183-aa51-fa9cc25d7134
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90630bf2-d365-475c-a447-5351d3c01bea
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the project that the issue belongs to.
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c6ff6b5a-0d81-4d87-9234-e7ddf6aeeb30
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ad7362a-c4d5-48a3-86e9-40b0b024405f
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: FLOAT
+        description: The estimate of how much longer working on this issue will take, in seconds.
+        name: REMAINING_ESTIMATE_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2ee14c5-c3cd-46d6-a130-96bd67502016
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: adbb04c9-72bc-40c5-8629-6b077bdc875f
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: VARCHAR(256)
+        description: Foreign key referencing the ID of the user who reported the issue. This differs from the creator column in that the reporter can be changed in-app.
+        name: REPORTER_USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47034f1e-776b-4594-93c5-b181d33880ae
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a56031f-1de9-4032-adb8-fa1d346f7097
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue's type of resolution.
+        name: RESOLUTION_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a735001c-988f-41cc-b3fb-8a00837f5191
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3f00dc88-81da-4477-978d-6456568c3fa1
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: Timestamp of when the issue was resolved (ie completed, marked as duplicate). If an issue is un-resolved, this will be null.
+        name: RESOLVED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2aa7a987-777e-4441-8669-fe214c92d6a3
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8486ff3a-554f-4258-adde-9c7f62887c36
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue's status (the step that the issue is currently at in the project's workflow).
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fcc36944-8b3e-47f2-8747-fe947eaae8bd
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a899849-c41c-4581-b474-18e66a9885a1
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: Timestamp of when the status was last changed.
+        name: STATUS_CHANGE_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e280241-3172-4040-9d32-721b6cf6b67e
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11cadd74-7578-4c0a-af4d-47812b50e508
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: FLOAT
+        description: The time that was spent working on this issue, in seconds.
+        name: TIME_SPENT_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4376f236-9f2e-4da4-94b9-78f1d9fe49fb
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc869071-f9fc-4c8e-b475-df70841d6a3f
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: Timestamp of when the issue was last updated in some way.
+        name: UPDATED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 748f233d-4b19-4ee0-9409-1be82a0bb5cf
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d70d0fb-0b10-4d6d-8704-8c8d193ed6d8
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: FLOAT
+        description: The percentage of work that has been logged against the issue (time_spent) vs the original estimate of worktime. Equals -1.0 when the fields required for calculation are not provided.
+        name: WORK_RATIO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 756852ff-72bf-40a3-af26-3c54da7d9628
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+      - acceptedValues:
+          strictMatch: false
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 81f71a81-d7b4-4a74-8d9a-85dc3d43b082
+          stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ac6418b0-3b90-42e3-b437-1d97b7f3d49c
+                stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__ISSUE_TYPE_PARENTS: b704d14b-acb4-4cb6-83f2-ade73242bcc6
+          STG_JIRA__USER_ASSIGNEE: 72c6fb1d-e0f5-4f3c-874d-a48f8071f984
+          STG_JIRA__USER_REPORTER: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__ISSUE_TYPE_PARENTS
+          - locationName: STG
+            nodeName: STG_JIRA__USER_ASSIGNEE
+          - locationName: STG
+            nodeName: STG_JIRA__USER_REPORTER
+        join:
+          joinCondition: |-
+            FROM {{ ref('INT', 'INT_JIRA__ISSUE_TYPE_PARENTS') }} "INT_JIRA__ISSUE_TYPE_PARENTS"
+            LEFT JOIN {{ ref('STG', 'STG_JIRA__USER_ASSIGNEE') }} "STG_JIRA__USER_ASSIGNEE"
+            ON "INT_JIRA__ISSUE_TYPE_PARENTS"."ASSIGNEE_USER_ID" = "STG_JIRA__USER_ASSIGNEE"."USER_ID"
+            LEFT JOIN {{ ref('STG', 'STG_JIRA__USER_REPORTER') }} "STG_JIRA__USER_REPORTER"
+            ON "INT_JIRA__ISSUE_TYPE_PARENTS"."REPORTER_USER_ID" = "STG_JIRA__USER_REPORTER"."USER_ID"
+        name: INT_JIRA__ISSUE_USERS
+        noLinkRefs: []
+  name: INT_JIRA__ISSUE_USERS
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

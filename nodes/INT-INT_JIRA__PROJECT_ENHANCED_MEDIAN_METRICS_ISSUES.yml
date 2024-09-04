@@ -1,0 +1,136 @@
+fileVersion: 1
+id: 7c29b732-9893-472a-bef2-18ea16521f09
+name: INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d2c81d63-4a29-4930-a3a3-911eb98f3fe0
+          stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a78d18e4-93b7-48f6-852e-8b71c9b0beea
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 20f0752b-80be-4aae-8684-6eb8fdb270c2
+          stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: MEDIAN_CLOSED_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: |-
+              ROUND(
+                                  CAST(
+                                      PERCENTILE_CONT(0.5) 
+                                      WITHIN GROUP (ORDER BY CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NOT NULL THEN "JIRA__ISSUE_ENHANCED"."OPEN_DURATION_SECONDS" END)
+                                      OVER (PARTITION BY project_id)
+                                  AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd61de12-8aa6-4514-a921-bd258c4cbd7e
+          stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: MEDIAN_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: |-
+              ROUND(
+                                  CAST(
+                                      PERCENTILE_CONT(0.5) 
+                                      WITHIN GROUP (ORDER BY CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NULL THEN "JIRA__ISSUE_ENHANCED"."OPEN_DURATION_SECONDS" END)
+                                      OVER (PARTITION BY project_id)
+                                  AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1d39623-9717-43e7-b229-df72aeb016c2
+          stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: MEDIAN_ASSIGNED_CLOSED_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: |-
+              ROUND(
+                                  CAST(
+                                      PERCENTILE_CONT(0.5) 
+                                      WITHIN GROUP (ORDER BY CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NOT NULL THEN "JIRA__ISSUE_ENHANCED"."ANY_ASSIGNMENT_DURATION_SECONDS" END)
+                                      OVER (PARTITION BY project_id)
+                                  AS NUMERIC(28,6)), 0)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea71b93c-c081-42fc-a7b9-1a7cfa5bb2a6
+          stepCounter: 7c29b732-9893-472a-bef2-18ea16521f09
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: MEDIAN_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: |-
+              ROUND(
+                                  CAST(
+                                      PERCENTILE_CONT(0.5) 
+                                      WITHIN GROUP (ORDER BY CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NULL THEN "JIRA__ISSUE_ENHANCED"."ANY_ASSIGNMENT_DURATION_SECONDS" END)
+                                      OVER (PARTITION BY project_id)
+                                  AS NUMERIC(28,6)), 0)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JIRA__ISSUE_ENHANCED: daaa0244-7a3b-413b-998c-a9101e6595e6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__ISSUE_ENHANCED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'JIRA__ISSUE_ENHANCED') }} "JIRA__ISSUE_ENHANCED"
+            WHERE "JIRA__ISSUE_ENHANCED"."PROJECT_ID" IS NOT NULL
+        name: INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES
+        noLinkRefs: []
+  name: INT_JIRA__PROJECT_ENHANCED_MEDIAN_METRICS_ISSUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

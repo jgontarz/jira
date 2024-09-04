@@ -279,18 +279,18 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__USER_METRICS_ISSUES
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__USER_PROJECTS_ENHANCED
-          - locationName: TGT
+          - locationName: STG
             nodeName: STG_JIRA__USER
         join:
           joinCondition: |-
-            FROM {{ ref('TGT', 'STG_JIRA__USER') }} "STG_JIRA__USER"
-            LEFT JOIN {{ ref('TGT', 'INT_JIRA__USER_PROJECTS_ENHANCED') }} "INT_JIRA__USER_PROJECTS_ENHANCED"
+            FROM {{ ref('STG', 'STG_JIRA__USER') }} "STG_JIRA__USER"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__USER_PROJECTS_ENHANCED') }} "INT_JIRA__USER_PROJECTS_ENHANCED"
             ON "STG_JIRA__USER"."USER_ID" = "INT_JIRA__USER_PROJECTS_ENHANCED"."ASSIGNEE_USER_ID"
-            LEFT JOIN {{ ref('TGT', 'INT_JIRA__USER_METRICS_ISSUES') }} "INT_JIRA__USER_METRICS_ISSUES"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__USER_METRICS_ISSUES') }} "INT_JIRA__USER_METRICS_ISSUES"
             ON "STG_JIRA__USER"."USER_ID" = "INT_JIRA__USER_METRICS_ISSUES"."USER_ID"
         name: JIRA__USER_ENHANCED
         noLinkRefs: []

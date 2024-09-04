@@ -1,0 +1,102 @@
+fileVersion: 1
+id: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eab6c9e3-0f68-497f-a9c5-0f7513832aeb
+          stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_DAY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1d18a3a9-2684-4b22-9ee4-583bc4f15b6b
+                stepCounter: 7c89d6a3-71f1-4e04-adf5-e1edf9ec63e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0163a055-1472-483d-9219-0a6d16c2a933
+          stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 653eae2a-1f9b-4422-b831-f0995c385471
+                stepCounter: 7c89d6a3-71f1-4e04-adf5-e1edf9ec63e7
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f085f26-c739-42ba-8ef3-02ae5b76a24a
+          stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90bc25a9-f279-4877-ab32-e1b022a9c6a1
+                stepCounter: 7c89d6a3-71f1-4e04-adf5-e1edf9ec63e7
+            transform: |-
+              first_value( "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."STATUS_ID" ) over (
+                          partition by "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."ISSUE_ID", "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."STATUS_ID_FIELD_PARTITION"
+                          order by "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."DATE_DAY" asc rows between unbounded preceding and current row)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cf92bec6-ca19-4a88-9243-81da23134641
+          stepCounter: 3f05565f-8f6e-46aa-a66b-318594dbf64c
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SPRINT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7f57086-5000-4e22-b53b-f2671ec0dd1c
+                stepCounter: 7c89d6a3-71f1-4e04-adf5-e1edf9ec63e7
+            transform: |-
+              first_value( "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."SPRINT" ) over (
+                          partition by "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."ISSUE_ID", "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."STATUS_ID_FIELD_PARTITION"
+                          order by "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"."DATE_DAY" asc rows between unbounded preceding and current row)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES: 7c89d6a3-71f1-4e04-adf5-e1edf9ec63e7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES
+        join:
+          joinCondition: FROM {{ ref('INT', 'INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES') }} "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_SET_VALUES"
+        name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES
+        noLinkRefs: []
+  name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,139 @@
+fileVersion: 1
+id: c605343b-6704-48c8-868d-d3ccd84d6d8b
+name: INT_JIRA__FIELD_HISTORY_SCD
+operation:
+  config:
+    groupByAll: false
+    insertStrategy: INSERT
+    orderby: false
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: "Slowly-changing-dimension model that fills values from differnt fields in the pivoted daily history model. Note: this is the singular field history-related model that is not incremental (materialized as table)"
+  isMultisource: false
+  locationName: INT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4dda0b46-5433-4bd8-ab30-75d117e67112
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: DATE
+        description: Calendar date of when the field was changed to this value.
+        name: VALID_STARTING_ON
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5a5a4f20-f70a-48b5-baee-4b16bb1ba248
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd39f3fb-4885-47cb-808b-35fa41794c21
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the ID of the issue whose field was updated.
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ed07ea11-e7ec-4e94-aeaf-b518a418630a
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7fe387bf-8ea6-4462-a4c4-f0c8e1382419
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: STRING
+        description: |+
+          Unique ID hashed on valid_starting_on and issue_field_history.
+
+        name: ISSUE_DAY_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6175abc9-dc40-4aae-8883-0fce0e8442ad
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bd9a0c2a-cf73-4f07-8d4c-aaada5bb8b84
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20be67c0-e09f-43f6-af5a-d4379ada3e3f
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: |-
+              first_value( "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."STATUS_ID" ) over (
+                          partition by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."ISSUE_ID", "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."STATUS_ID_FIELD_PARTITION" 
+                          order by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."VALID_STARTING_ON" asc rows between unbounded preceding and current row)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 148bc7a0-685b-4198-88c0-1632f3c71b04
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: STRING
+        description: The ID of the status that an issue has on a given day.
+        name: STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e3b9f2fd-b14a-401c-9abb-46d4637a32d6
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: |-
+              first_value( "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."STATUS" ) over (
+                          partition by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."ISSUE_ID", "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."STATUS_FIELD_PARTITION" 
+                          order by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."VALID_STARTING_ON" asc rows between unbounded preceding and current row)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 94db25fc-d4d9-431b-9d8c-6396e03ee11b
+          stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+        config: {}
+        dataType: STRING
+        description: The ID of the sprint that an issue is slotted into on a given day.
+        name: SPRINT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1704e3ea-6e79-4534-b603-c0032e2c96df
+                stepCounter: 5ccc3974-3487-4355-a371-7a302a9e5046
+            transform: |-
+              first_value( "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."SPRINT" ) over (
+                          partition by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."ISSUE_ID", "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."SPRINT_ID_FIELD_PARTITION" 
+                          order by "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"."VALID_STARTING_ON" asc rows between unbounded preceding and current row)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES: 5ccc3974-3487-4355-a371-7a302a9e5046
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES
+        join:
+          joinCondition: FROM {{ ref('INT', 'INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES') }} "INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES"
+        name: INT_JIRA__FIELD_HISTORY_SCD
+        noLinkRefs: []
+  name: INT_JIRA__FIELD_HISTORY_SCD
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

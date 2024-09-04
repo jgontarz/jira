@@ -1,0 +1,96 @@
+fileVersion: 1
+id: 87486942-e4dc-4dda-99ce-6f808202cdc4
+name: STG_JIRA__FIELD_OPTION
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of all options related to custom fields.
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aaf84b73-9428-4cb7-a08d-b611642b94c2
+          stepCounter: 87486942-e4dc-4dda-99ce-6f808202cdc4
+        config: {}
+        dataType: STRING
+        description: The ID of the custom field.
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 72fd8668-e75f-41be-bbb5-5057f0e7131d
+                stepCounter: 35a72e92-0664-4c20-a586-a45e8aef424d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0cfa702-4049-4110-8fe6-7e0ac4f4fbb0
+          stepCounter: 87486942-e4dc-4dda-99ce-6f808202cdc4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: The ID of the parent custom field.
+        name: PARENT_FIELD_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 64052ff2-c446-420f-91a7-822f6ed0659b
+                stepCounter: 35a72e92-0664-4c20-a586-a45e8aef424d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e6feaac-60f3-43be-81f7-53f5b3bbddd0
+          stepCounter: 87486942-e4dc-4dda-99ce-6f808202cdc4
+        config: {}
+        dataType: VARCHAR(256)
+        description: Name of the field option.
+        name: FIELD_OPTION_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 521f0c08-9464-4a65-941d-3c52f5d6221e
+                stepCounter: 35a72e92-0664-4c20-a586-a45e8aef424d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a50b4cf-28a7-4d09-9723-728c435d2764
+          stepCounter: 87486942-e4dc-4dda-99ce-6f808202cdc4
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e837abd6-ccec-4288-9aca-39eeb39b62fd
+                stepCounter: 35a72e92-0664-4c20-a586-a45e8aef424d
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_JIRA__FIELD_OPTION_TMP: 35a72e92-0664-4c20-a586-a45e8aef424d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: STG
+            nodeName: STG_JIRA__FIELD_OPTION_TMP
+        join:
+          joinCondition: FROM {{ ref('STG', 'STG_JIRA__FIELD_OPTION_TMP') }} "STG_JIRA__FIELD_OPTION_TMP"
+        name: STG_JIRA__FIELD_OPTION
+        noLinkRefs: []
+  name: STG_JIRA__FIELD_OPTION
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

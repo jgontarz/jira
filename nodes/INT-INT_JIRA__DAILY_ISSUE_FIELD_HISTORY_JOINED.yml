@@ -1,0 +1,117 @@
+fileVersion: 1
+id: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_JOINED
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5fb4c05e-d144-4d30-8337-6adb4f087ac6
+          stepCounter: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_DAY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a218c78f-7902-489e-a2e0-2fe0d9860860
+                stepCounter: bb2daa91-afb7-4874-8a7b-de1c7889ffb3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 787a6d4f-0613-4530-b1bc-e1b4d231d632
+          stepCounter: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 63cd15b3-6723-44b0-9164-38dfbc2be451
+                stepCounter: bb2daa91-afb7-4874-8a7b-de1c7889ffb3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 44e6b15e-bdef-44df-abea-d5d9d0b7a97b
+          stepCounter: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd9a0c2a-cf73-4f07-8d4c-aaada5bb8b84
+                stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c0a0c27-66c3-4285-821e-44f929b2190f
+          stepCounter: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 148bc7a0-685b-4198-88c0-1632f3c71b04
+                stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc718afb-0fb5-4747-af20-3cf4389f9072
+          stepCounter: 5abb63b2-0950-44e2-9a7f-d98dd1cd668b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SPRINT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 94db25fc-d4d9-431b-9d8c-6396e03ee11b
+                stepCounter: c605343b-6704-48c8-868d-d3ccd84d6d8b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__FIELD_HISTORY_SCD: c605343b-6704-48c8-868d-d3ccd84d6d8b
+          INT_JIRA__ISSUE_CALENDAR_SPINE: bb2daa91-afb7-4874-8a7b-de1c7889ffb3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__FIELD_HISTORY_SCD
+          - locationName: INT
+            nodeName: INT_JIRA__ISSUE_CALENDAR_SPINE
+        join:
+          joinCondition: |-
+            FROM {{ ref('INT', 'INT_JIRA__ISSUE_CALENDAR_SPINE') }} "INT_JIRA__ISSUE_CALENDAR_SPINE"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__FIELD_HISTORY_SCD') }} "INT_JIRA__FIELD_HISTORY_SCD"
+            ON "INT_JIRA__ISSUE_CALENDAR_SPINE"."ISSUE_ID" = "INT_JIRA__FIELD_HISTORY_SCD"."ISSUE_ID"
+            AND "INT_JIRA__ISSUE_CALENDAR_SPINE"."DATE_DAY" = "INT_JIRA__FIELD_HISTORY_SCD"."VALID_STARTING_ON"
+        name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_JOINED
+        noLinkRefs: []
+  name: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_JOINED
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,82 @@
+fileVersion: 1
+id: eedda304-13fd-45f8-89e9-487c0d930aed
+name: STG_JIRA__STATUS_CATEGORY
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of umbrella status categories.
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed9ff670-5838-44d1-8846-7ac3e9a6b1ee
+          stepCounter: eedda304-13fd-45f8-89e9-487c0d930aed
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unique ID of the status category.
+        name: STATUS_CATEGORY_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0c0cfc8e-5045-40e5-a077-be8ff0ebf75a
+                stepCounter: cbdbbcd2-fc62-4efc-8e1a-bda2dbaa585e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 04d835e5-b2ca-48cd-89ed-cc266f71283b
+          stepCounter: eedda304-13fd-45f8-89e9-487c0d930aed
+        config: {}
+        dataType: VARCHAR(256)
+        description: Title of the status category.
+        name: STATUS_CATEGORY_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3c4383f6-1f89-48c8-8200-1c10f8641374
+                stepCounter: cbdbbcd2-fc62-4efc-8e1a-bda2dbaa585e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 983c3855-e18d-4666-b2bd-0809f62f477c
+          stepCounter: eedda304-13fd-45f8-89e9-487c0d930aed
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0df785f3-53f0-472a-842c-5338972333a0
+                stepCounter: cbdbbcd2-fc62-4efc-8e1a-bda2dbaa585e
+            transform: "\"STG_JIRA__STATUS_CATEGORY_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_JIRA__STATUS_CATEGORY_TMP: cbdbbcd2-fc62-4efc-8e1a-bda2dbaa585e
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: STG
+            nodeName: STG_JIRA__STATUS_CATEGORY_TMP
+        join:
+          joinCondition: FROM {{ ref('STG', 'STG_JIRA__STATUS_CATEGORY_TMP') }} "STG_JIRA__STATUS_CATEGORY_TMP"
+        name: STG_JIRA__STATUS_CATEGORY
+        noLinkRefs: []
+  name: STG_JIRA__STATUS_CATEGORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

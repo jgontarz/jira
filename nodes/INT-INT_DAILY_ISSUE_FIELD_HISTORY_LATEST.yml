@@ -1,0 +1,126 @@
+fileVersion: 1
+id: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+name: INT_DAILY_ISSUE_FIELD_HISTORY_LATEST
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0fb598f-3b42-4a34-812b-223316c30714
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_DAY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 016538ba-9b4d-478e-96c4-f1bc63bfc295
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c441c7c-9a38-4f17-94bd-1c41e0964c1c
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f2bb507d-9286-4c85-9159-a80e5e54400e
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 463da332-5df5-442e-993c-19f26c9a4292
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90a0ceea-66e3-49b8-bee8-4c3d00ed44ca
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 251b584c-8fb0-4db8-9737-dcecbe76297f
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: STATUS_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9b7cff72-9f32-47f6-b491-4491e0bbbec4
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1fbb6749-7f79-4d44-a564-4983367367e3
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: SPRINT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff691a82-b14c-4919-b410-2466565dc165
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 752b16d4-71c5-4807-8847-6a7d3b084a58
+          stepCounter: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+        config: {}
+        dataType: STRING
+        description: ""
+        name: ISSUE_DAY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5df293c7-6cd9-4bb2-82da-51b80b3fa57b
+                stepCounter: 0893faa0-9efc-43b0-b754-41a37693f312
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JIRA__DAILY_ISSUE_FIELD_HISTORY: 0893faa0-9efc-43b0-b754-41a37693f312
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__DAILY_ISSUE_FIELD_HISTORY
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'JIRA__DAILY_ISSUE_FIELD_HISTORY') }} "JIRA__DAILY_ISSUE_FIELD_HISTORY"
+            QUALIFY 1 = ROW_NUMBER() OVER (PARTITION BY "JIRA__DAILY_ISSUE_FIELD_HISTORY"."ISSUE_ID" ORDER BY "JIRA__DAILY_ISSUE_FIELD_HISTORY"."DATE_DAY" DESC)
+        name: INT_DAILY_ISSUE_FIELD_HISTORY_LATEST
+        noLinkRefs: []
+  name: INT_DAILY_ISSUE_FIELD_HISTORY_LATEST
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

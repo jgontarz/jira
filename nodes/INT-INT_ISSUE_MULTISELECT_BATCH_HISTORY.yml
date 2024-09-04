@@ -1,0 +1,131 @@
+fileVersion: 1
+id: 644dfa17-3d88-4244-af94-3d8c043f28f5
+name: INT_ISSUE_MULTISELECT_BATCH_HISTORY
+operation:
+  config:
+    groupByAll: true
+    insertStrategy: INSERT
+    orderby: false
+    orderbycolumn:
+      items:
+        - {}
+    postSQL: ""
+    preSQL: ""
+    secureoption: false
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 669ca0ca-a6aa-4890-8f54-89fd11e29c61
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9120a21d-2202-4fd5-8f75-c5fc06be8c18
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0c89d8d-919c-4a16-8cd3-8f918b84e499
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: FIELD_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 75c13564-dc03-490d-bb7c-65bffc9a1a55
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 628085e5-35b4-40ef-9e72-0e1cc57b8db1
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 290def65-82bc-4751-9f5e-9d0a604a4f63
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c01a170a-590a-4b71-b0ec-204dd9b5c09d
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: UPDATED_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21d3246e-260a-47ce-a915-6236b390c14c
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d48e372-63bb-4cbb-a783-12c263612644
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: DATE
+        description: ""
+        name: DATE_DAY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21d3246e-260a-47ce-a915-6236b390c14c
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: cast( date_trunc('day', "INT_JIRA__ISSUE_MULTISELECT_HISTORY"."UPDATED_AT") AS date)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74adc3d2-f1b5-46b5-8e89-05dfa1e240e0
+          stepCounter: 644dfa17-3d88-4244-af94-3d8c043f28f5
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_VALUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7c2cf4a-136d-46d4-9026-cf700b92fc6c
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: listagg("INT_JIRA__ISSUE_MULTISELECT_HISTORY"."FIELD_VALUE", ', ') WITHIN GROUP (ORDER BY "INT_JIRA__ISSUE_MULTISELECT_HISTORY"."FIELD_VALUE")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__ISSUE_MULTISELECT_HISTORY: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__ISSUE_MULTISELECT_HISTORY
+        join:
+          joinCondition: FROM {{ ref('INT', 'INT_JIRA__ISSUE_MULTISELECT_HISTORY') }} "INT_JIRA__ISSUE_MULTISELECT_HISTORY"
+        name: INT_ISSUE_MULTISELECT_BATCH_HISTORY
+        noLinkRefs: []
+  name: INT_ISSUE_MULTISELECT_BATCH_HISTORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

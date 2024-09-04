@@ -1,0 +1,116 @@
+fileVersion: 1
+id: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+name: INT_JIRA__USER_ISSUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6b4f2e00-8a8a-4268-aa9f-c50aed65a20f
+          stepCounter: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eed0dca6-544c-44ce-b7e0-285d6c1e5a0c
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 76400f6c-32a3-478c-a831-91e55295881a
+          stepCounter: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_CLOSED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: SUM(CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NOT NULL THEN 1 ELSE 0 END)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ade1d3f0-6ad6-443e-b9d1-a887c8345171
+          stepCounter: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_OPEN_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8db69d2-581b-4d01-b460-f8dd42a8b9b9
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: SUM(CASE WHEN "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" IS NULL THEN 1 ELSE 0 END)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6a92065-1f1b-448a-810f-78a9638c2bb0
+          stepCounter: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SUM_CLOSE_TIME_SECONDS
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c427428c-cd40-4ead-b7b5-ae18ccabceed
+                stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
+            transform: sum(case when "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" is not null then "JIRA__ISSUE_ENHANCED"."LAST_ASSIGNMENT_DURATION_SECONDS" end)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61d1fbbb-688a-45b0-af18-34167df6537b
+          stepCounter: d9a460ac-aa4b-4773-9c0b-ffabab042c7f
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        name: SUM_CURRENT_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: sum(case when "JIRA__ISSUE_ENHANCED"."RESOLVED_AT" is null then "JIRA__ISSUE_ENHANCED"."LAST_ASSIGNMENT_DURATION_SECONDS" end)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          JIRA__ISSUE_ENHANCED: daaa0244-7a3b-413b-998c-a9101e6595e6
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__ISSUE_ENHANCED
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'JIRA__ISSUE_ENHANCED') }} "JIRA__ISSUE_ENHANCED"
+            WHERE "JIRA__ISSUE_ENHANCED"."ASSIGNEE_USER_ID" IS NOT NULL
+        name: INT_JIRA__USER_ISSUES
+        noLinkRefs: []
+  name: INT_JIRA__USER_ISSUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

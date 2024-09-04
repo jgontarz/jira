@@ -1,0 +1,180 @@
+fileVersion: 1
+id: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+name: INT_JIRA__PROJECT_AVG_METRICS_ISSUES
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: true
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c4af3bbf-813a-4729-81bc-48c3a98956a3
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0915cd97-5845-49a2-be0c-8727768f57f2
+                stepCounter: a2ffd815-f099-4bde-9936-5c7701b50c1e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e10c12b-4609-4b4b-a9fb-ebb1eebac44f
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_CLOSED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 19c0dae3-19ba-42d1-9b14-ecec9e9860cc
+                stepCounter: a2ffd815-f099-4bde-9936-5c7701b50c1e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5a3b0a9-b73b-4299-b392-091f460bd70b
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_OPEN_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fc1bd592-affb-494c-81fd-a5f7d85b91a7
+                stepCounter: a2ffd815-f099-4bde-9936-5c7701b50c1e
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39084ad9-3f50-43ce-b515-1a7d00ac6cc8
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: COUNT_OPEN_ASSIGNED_ISSUES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2ecb3956-ae0e-4d1e-81e9-89f5553f9b50
+                stepCounter: a2ffd815-f099-4bde-9936-5c7701b50c1e
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2a6b452-49fc-4a35-8c9a-76c8aecc6357
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: AVG_CLOSE_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE WHEN "INT_JIRA__PROJECT_ISSUES"."COUNT_CLOSED_ISSUES" = 0 THEN 0 ELSE
+                                  ROUND(CAST("INT_JIRA__PROJECT_ISSUES"."SUM_CLOSE_TIME_SECONDS" * 1.0 / "INT_JIRA__PROJECT_ISSUES"."COUNT_CLOSED_ISSUES" AS NUMERIC(28,6)), 0) 
+                              END
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 88529da8-ddcd-4acc-927f-501b609f2c13
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: AVG_ASSIGNED_CLOSE_TIME_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE WHEN "INT_JIRA__PROJECT_ISSUES"."COUNT_CLOSED_ASSIGNED_ISSUES" = 0 THEN 0 ELSE
+                                  ROUND(CAST("INT_JIRA__PROJECT_ISSUES"."SUM_ASSIGNED_CLOSE_TIME_SECONDS" * 1.0 / "INT_JIRA__PROJECT_ISSUES"."COUNT_CLOSED_ASSIGNED_ISSUES" AS NUMERIC(28,6)), 0) 
+                              END
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b83cab8-e526-443a-85c7-dec767c9caf9
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: AVG_AGE_CURRENTLY_OPEN_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE WHEN "INT_JIRA__PROJECT_ISSUES"."COUNT_OPEN_ISSUES" = 0 THEN 0 ELSE
+                                  ROUND(CAST("INT_JIRA__PROJECT_ISSUES"."SUM_CURRENTLY_OPEN_DURATION_SECONDS" * 1.0 / "INT_JIRA__PROJECT_ISSUES"."COUNT_OPEN_ISSUES" AS NUMERIC(28,6)), 0) 
+                              END
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f8baf670-1593-45d1-9582-ea6e7c603af8
+          stepCounter: e2c48eeb-cd24-4553-ab78-5704ce250ce2
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: AVG_AGE_CURRENTLY_OPEN_ASSIGNED_SECONDS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |-
+              CASE WHEN "INT_JIRA__PROJECT_ISSUES"."COUNT_OPEN_ASSIGNED_ISSUES" = 0 THEN 0 ELSE
+                                  ROUND(CAST("INT_JIRA__PROJECT_ISSUES"."SUM_CURRENTLY_OPEN_ASSIGNED_DURATION_SECONDS" * 1.0 / "INT_JIRA__PROJECT_ISSUES"."COUNT_OPEN_ASSIGNED_ISSUES" AS NUMERIC(28,6)), 0) 
+                              END
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__PROJECT_ISSUES: a2ffd815-f099-4bde-9936-5c7701b50c1e
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__PROJECT_ISSUES
+        join:
+          joinCondition: FROM {{ ref('INT', 'INT_JIRA__PROJECT_ISSUES') }} "INT_JIRA__PROJECT_ISSUES"
+        name: INT_JIRA__PROJECT_AVG_METRICS_ISSUES
+        noLinkRefs: []
+  name: INT_JIRA__PROJECT_AVG_METRICS_ISSUES
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,180 @@
+fileVersion: 1
+id: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+name: STG_JIRA__VERSION
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Table of project versions in your organization.
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34d527a6-1d08-42a7-8055-23dc17b89364
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: BOOLEAN
+        description: Boolean that is true if the project version has been archived.
+        name: IS_ARCHIVED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f565788c-479b-46f1-b8c8-dcb4e9eeabdf
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3485232-2524-42df-be72-8061cd82feb9
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: VARCHAR(256)
+        description: The optional description given to the version.
+        name: DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7a1a1e0-c4e9-4c6e-8e94-d6ce5a0008e3
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e5a6925-fad5-468b-9519-819b136fc2e4
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Unique ID of the version.
+        name: VERSION_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29ab6b98-f5bf-4191-bfe9-13853658715e
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 473b954e-d6a4-48d4-ae30-6401a614b78d
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: VARCHAR(256)
+        description: Unique name of the version.
+        name: VERSION_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 79b878fb-75a9-4af3-bf37-b01ba84b2dad
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d44f897-9a49-42fa-b60b-d9bbc897dded
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: BOOLEAN
+        description: Boolean that is true if the version is past its optional release date, false if it is not or if it does not have a due date.
+        name: IS_OVERDUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31287e74-2a08-4b68-bc05-e193a5886d67
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31f4adca-ff3e-42f2-8b0e-8c5f7170b580
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: NUMBER(38,0)
+        description: Foreign key referencing the PROJECT to which this version is attached.
+        name: PROJECT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 64cec8e0-058e-4277-be52-790ed9e820d8
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19f88ed5-23b0-4006-b655-dc7084c1133a
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: The optional release date of the version. Expressed in ISO 8601 format (yyyy-mm-dd).
+        name: RELEASE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43f81d4e-7ccc-48ba-8ff4-9df8e6c57446
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: "\"STG_JIRA__VERSION_TMP\".\"RELEASE_DATE\"::TIMESTAMP_NTZ"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b691c3b1-13ab-4e57-bb34-51c409cd2cad
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: BOOLEAN
+        description: Boolean that is true if the version has been released. If the version is released a request to release again is ignored
+        name: IS_RELEASED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 79d2aa7e-4c81-44f8-979e-6bbe4c781963
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8713a4b0-9a6e-4a59-ab4e-99d385cf5841
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: The start date of the version. Expressed in ISO 8601 format (yyyy-mm-dd).
+        name: START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9865728-7b62-4428-94cf-12b8db1ab337
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: "\"STG_JIRA__VERSION_TMP\".\"START_DATE\"::TIMESTAMP_NTZ"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb7abcc6-c6a2-4cb1-87bd-25d8e99641ff
+          stepCounter: 4ed9d9c7-afbf-4c07-ad70-3bc9f3a7bc38
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ad809e49-a609-4987-b15a-5cbff07829e6
+                stepCounter: 00169957-0964-404a-a00b-62ff2b21ae0b
+            transform: "\"STG_JIRA__VERSION_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_JIRA__VERSION_TMP: 00169957-0964-404a-a00b-62ff2b21ae0b
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: STG
+            nodeName: STG_JIRA__VERSION_TMP
+        join:
+          joinCondition: FROM {{ ref('STG', 'STG_JIRA__VERSION_TMP') }} "STG_JIRA__VERSION_TMP"
+        name: STG_JIRA__VERSION
+        noLinkRefs: []
+  name: STG_JIRA__VERSION
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

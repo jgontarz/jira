@@ -1,0 +1,179 @@
+fileVersion: 1
+id: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+name: STG_JIRA__SPRINT_TMP
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4d60bc4-1b3c-4dfa-b6a7-7baa7c141373
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4bee1473-6b7e-4d5d-878f-8c42179c0641
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1474f7c3-c0ba-4da1-ab19-4ec3624ee8ca
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c10ca5b5-b6c3-406f-844b-1e7148be5ee3
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c031998-bee1-4529-945d-b30883ab6803
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 599dcc2e-9085-45aa-8b2c-8cf9bfa715d1
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18efcbb0-6a4b-4c05-a00b-ce0aecee4214
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5d5e6784-d113-43e3-a5e7-13227c286c5a
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 891a995d-5019-41cc-9d38-bcf06175dbd3
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e516d3e-e7ff-47cd-8fbc-e7f0000eac49
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 304b50d8-4735-4f22-9311-a6b69360dd63
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: COMPLETE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3f1c01e7-9e63-4696-b315-052149e0ffcb
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b7a4455-e88f-4bd1-9458-68c2ce894193
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: VARCHAR(512)
+        description: ""
+        name: GOAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 056bfd47-fe16-4d07-ba71-e2e5071a4564
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0bba9dc0-0c6c-49c2-b5f8-70811a6a7c53
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3235cdfe-166b-4bd5-b2c3-ecb221705777
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2ed8b84d-fb09-4421-81b4-49e8cea1d1ac
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BOARD_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0ed26b0d-c05c-4a6a-98af-a2f7d7029ffd
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b9f3c388-4612-4249-b725-325180ba0f4b
+          stepCounter: 4c19c52b-e69b-4e04-8f75-34c3371df92d
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 858a69eb-6fd8-4c5c-8012-709eeffdd143
+                stepCounter: 203c037d-48b0-43f2-8c99-9dbbafeb975c
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: SPRINT
+        join:
+          joinCondition: FROM {{ ref('SRC', 'SPRINT') }} "SPRINT"
+        name: STG_JIRA__SPRINT_TMP
+        noLinkRefs: []
+  name: STG_JIRA__SPRINT_TMP
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

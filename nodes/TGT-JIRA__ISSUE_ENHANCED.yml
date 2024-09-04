@@ -865,20 +865,20 @@ operation:
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          DAILY_ISSUE_FIELD_HISTORY_LATEST: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
+          INT_DAILY_ISSUE_FIELD_HISTORY_LATEST: e5e0c04a-0e67-4f91-9fcb-8b1629772e2b
           INT_JIRA__ISSUE_JOIN: a49fb0ea-60e1-4746-a901-fefcdd0a0cdd
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
-            nodeName: DAILY_ISSUE_FIELD_HISTORY_LATEST
-          - locationName: TGT
+          - locationName: INT
+            nodeName: INT_DAILY_ISSUE_FIELD_HISTORY_LATEST
+          - locationName: INT
             nodeName: INT_JIRA__ISSUE_JOIN
         join:
           joinCondition: |-
-            FROM {{ ref('TGT', 'INT_JIRA__ISSUE_JOIN') }} "INT_JIRA__ISSUE_JOIN"
-            INNER JOIN {{ ref('TGT', 'DAILY_ISSUE_FIELD_HISTORY_LATEST') }} "DAILY_ISSUE_FIELD_HISTORY_LATEST"
-            ON "INT_JIRA__ISSUE_JOIN"."ISSUE_ID" = "DAILY_ISSUE_FIELD_HISTORY_LATEST"."ISSUE_ID"
+            FROM {{ ref('INT', 'INT_JIRA__ISSUE_JOIN') }} "INT_JIRA__ISSUE_JOIN"
+            INNER JOIN {{ ref('INT', 'INT_DAILY_ISSUE_FIELD_HISTORY_LATEST') }} "INT_DAILY_ISSUE_FIELD_HISTORY_LATEST"
+            ON "INT_JIRA__ISSUE_JOIN"."ISSUE_ID" = "INT_DAILY_ISSUE_FIELD_HISTORY_LATEST"."ISSUE_ID"
         name: JIRA__ISSUE_ENHANCED
         noLinkRefs: []
   name: JIRA__ISSUE_ENHANCED

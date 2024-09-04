@@ -1,0 +1,289 @@
+fileVersion: 1
+id: 0d0ea217-a980-4a67-9784-865db1b734c1
+name: INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ce95f3ef-feb1-4d43-b321-7992c98d6157
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9120a21d-2202-4fd5-8f75-c5fc06be8c18
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91a8d9cb-9707-4773-b098-e8ba4a3a91bf
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: FIELD_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 75c13564-dc03-490d-bb7c-65bffc9a1a55
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3f14e203-461a-455e-93ba-72cc509ad695
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 290def65-82bc-4751-9f5e-9d0a604a4f63
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 700d4f70-da2f-42d3-8179-7a6fea511e25
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: UPDATED_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 21d3246e-260a-47ce-a915-6236b390c14c
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3d54ada-95c8-46d7-bf04-1745573ec468
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: FIELD_VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7c2cf4a-136d-46d4-9026-cf700b92fc6c
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 318ebfd0-9e84-421b-9bbd-57afcc6a88bc
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: _FIVETRAN_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 30665a0b-bdb1-4657-b274-cf1873905516
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e4ea1b0-c5a4-4b0a-8060-140b91cdd2de
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: SPRINT_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9149ed40-784b-4f12-b23f-d43d2e990887
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c633bdbb-ad7a-45f8-a1bb-406e2f1f5b84
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: SPRINT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5b97a6d-a9c8-4e9a-a5ae-697b69c6b4af
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7fd1f92b-b729-4796-97b7-961c9f2ea6aa
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: BOARD_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7eeffad8-653c-4929-bcd0-a093163ed68d
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb9fc748-fdeb-4610-a2af-52ac6c79c249
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: COMPLETED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8facf011-47f7-4328-80cd-f6d7b20e8050
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f5353570-db81-46e2-bb36-837db77a91fd
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ENDED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ce1aebc8-1d25-44c6-b714-8f957f98bb18
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f791c55-08e6-4364-9ca8-e2879635b539
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: STARTED_AT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0cfcd3d4-4f1c-428a-abf3-7b655e41c8c3
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b5a818b-e3ff-4e1f-9051-195d9dbac561
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: STATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ebaf67f2-cf6c-4ef4-a9c6-e6ee1c60624d
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70f29c88-5f2f-453d-b560-b2ccb28210ad
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: VARCHAR(512)
+        description: ""
+        name: GOAL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6ac19c60-dff6-4b39-b393-ee6543dd9270
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af800ea7-1e12-48c7-ad8d-b108c31f796e
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: _FIVETRAN_DELETED_SPRING
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e61d99fe-1668-440d-a5ce-4cb4dc3a6a6c
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e33e1e8a-4db7-4b91-a2cb-646c67155f6a
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED_SPRING
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f44d48fa-9f7b-44f2-80ac-15deb2f432ec
+                stepCounter: 8e1399c8-593b-4b5e-b347-11fc69d28832
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5922a342-ab1c-448b-adec-1466547fdd84
+          stepCounter: 0d0ea217-a980-4a67-9784-865db1b734c1
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ROW_NUM
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 290def65-82bc-4751-9f5e-9d0a604a4f63
+                stepCounter: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+            transform: |-
+              ROW_NUMBER() OVER (
+                                  PARTITION BY "INT_JIRA__ISSUE_MULTISELECT_HISTORY"."ISSUE_ID" 
+                                  ORDER BY "INT_JIRA__ISSUE_MULTISELECT_HISTORY"."UPDATED_AT" DESC, "STG_JIRA__SPRINT"."STARTED_AT" DESC)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_JIRA__ISSUE_MULTISELECT_HISTORY: b4f231f7-c2d3-4634-b4fb-ddc819f10078
+          STG_JIRA__SPRINT: 8e1399c8-593b-4b5e-b347-11fc69d28832
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_JIRA__ISSUE_MULTISELECT_HISTORY
+          - locationName: STG
+            nodeName: STG_JIRA__SPRINT
+        join:
+          joinCondition: |-
+            FROM {{ ref('INT', 'INT_JIRA__ISSUE_MULTISELECT_HISTORY') }} "INT_JIRA__ISSUE_MULTISELECT_HISTORY"
+            JOIN {{ ref('STG', 'STG_JIRA__SPRINT') }} "STG_JIRA__SPRINT"
+            ON "INT_JIRA__ISSUE_MULTISELECT_HISTORY"."FIELD_VALUE" = "STG_JIRA__SPRINT"."SPRINT_ID"::STRING
+            WHERE LOWER("INT_JIRA__ISSUE_MULTISELECT_HISTORY"."FIELD_NAME") = 'sprint'
+            QUALIFY ROW_NUM = 1
+        name: INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY
+        noLinkRefs: []
+  name: INT_JIRA__ISSUE_SPRINT_FIELD_HISTORY
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

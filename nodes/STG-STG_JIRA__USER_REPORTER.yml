@@ -1,0 +1,138 @@
+fileVersion: 1
+id: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+name: STG_JIRA__USER_REPORTER
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 50f1fbf9-5df1-43f1-b692-da9ef5acd234
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bfdf42c2-347b-418b-b677-2621b1b2473e
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3aac48e5-5aca-4bab-940f-b70fed5d8f97
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: USER_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 267f5040-a3a3-44cf-a92a-302ce980f4c3
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1055c828-9db1-4282-90de-459571334c30
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: LOCALE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37ffd60d-b22e-41f5-b10f-cebad9937f7c
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d37d2aa-f797-4fd6-989a-4b3d43f446f9
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: USER_DISPLAY_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3521ece4-b752-47c8-aec6-54b8c7bac148
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02cc2d27-4b3f-4ce9-8ad2-c069f6d1d3fe
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: TIME_ZONE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: be6589d0-6f67-49e9-8850-dd80a4596eeb
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8e1d1969-c593-4569-9ec5-efb135a65694
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: USERNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4571c356-b2fb-4e0c-b62c-8abde70f7192
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f5dcf49-e160-4899-adb0-9694431471c2
+          stepCounter: 8c32dc4e-6b4d-454c-aa3c-01af5de2cf84
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af834b8e-966e-4486-8e37-a3c8fb2507c3
+                stepCounter: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_JIRA__USER: 2fbe86dc-ed03-4d3e-bee4-9b06f0de28c3
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: STG
+            nodeName: STG_JIRA__USER
+        join:
+          joinCondition: FROM {{ ref('STG', 'STG_JIRA__USER') }} "STG_JIRA__USER"
+        name: STG_JIRA__USER_REPORTER
+        noLinkRefs: []
+  name: STG_JIRA__USER_REPORTER
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

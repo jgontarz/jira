@@ -1,0 +1,109 @@
+fileVersion: 1
+id: a48b98be-2447-4d89-b767-37d339b1a9b4
+name: STG_JIRA__STATUS_TMP
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: STG
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1db6c24a-4c2c-42b5-bf3e-5aad3603443c
+          stepCounter: a48b98be-2447-4d89-b767-37d339b1a9b4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fde045aa-57e2-47d3-baa5-8fb1c2a2cece
+                stepCounter: ce2e086d-f878-417f-bf4e-9c4e12a5bf16
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 453722af-95a9-4b83-8733-b9d485365e22
+          stepCounter: a48b98be-2447-4d89-b767-37d339b1a9b4
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: DESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56a5ac5c-dab7-486e-86d9-5fda1a9e43a1
+                stepCounter: ce2e086d-f878-417f-bf4e-9c4e12a5bf16
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f37bb7cc-5a13-4332-b1a1-d08aff7334e7
+          stepCounter: a48b98be-2447-4d89-b767-37d339b1a9b4
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d9736adb-f3a9-4379-bb0d-742644068777
+                stepCounter: ce2e086d-f878-417f-bf4e-9c4e12a5bf16
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ad44cce-f6f3-4ed9-ac8e-081a39e05fb3
+          stepCounter: a48b98be-2447-4d89-b767-37d339b1a9b4
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: STATUS_CATEGORY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 60933de0-c88a-4107-8916-776e95608ce9
+                stepCounter: ce2e086d-f878-417f-bf4e-9c4e12a5bf16
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e774439b-d971-40b3-83e3-74d3eb7324d0
+          stepCounter: a48b98be-2447-4d89-b767-37d339b1a9b4
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 877d1beb-44ba-41c7-907e-7ba34f3e64e5
+                stepCounter: ce2e086d-f878-417f-bf4e-9c4e12a5bf16
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: STATUS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'STATUS') }} "STATUS"
+        name: STG_JIRA__STATUS_TMP
+        noLinkRefs: []
+  name: STG_JIRA__STATUS_TMP
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

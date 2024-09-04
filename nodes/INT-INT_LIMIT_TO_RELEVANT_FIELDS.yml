@@ -1,0 +1,141 @@
+fileVersion: 1
+id: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+name: INT_LIMIT_TO_RELEVANT_FIELDS
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    secureoption: false
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: INT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bada36dd-b581-47f4-8d78-9995bd7b0c62
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4c566d87-67c5-4d2d-9a1e-5c3eccf61bb5
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59863a6f-0d65-4687-a3a0-6b04399c0e6a
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ISSUE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56a21a5f-98b0-49c9-9008-b05c153b2d7f
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6011393b-6d2e-4748-83a1-b9b9d27788d6
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FIELD_VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 96d28e89-ba2e-4f77-a07a-2cf77beac9e8
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3d040d8-3791-4e4b-bc28-6f4212837af0
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: FIELD_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b19013cf-7ec4-4b83-9f69-07ce83927a4a
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac872030-03e0-49a5-8d16-0c0d554c54d4
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: VALID_STARTING_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87358929-242b-4fca-a32c-a5b582753941
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a7d46e16-0318-41bb-abb8-594c9181655e
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: VALID_ENDING_AT
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87358929-242b-4fca-a32c-a5b582753941
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: LEAD("INT_COMBINE_FIELD_HISTORY"."UPDATED_AT", 1) OVER(partition BY "INT_COMBINE_FIELD_HISTORY"."ISSUE_ID", "INT_COMBINE_FIELD_HISTORY".field_id ORDER BY "INT_COMBINE_FIELD_HISTORY"."UPDATED_AT" ASC)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8607bd57-fb7b-41e1-90df-506bd459b4d3
+          stepCounter: 9909d68b-5848-48cd-90d2-46ea8d193f9f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: VALID_STARTING_ON
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87358929-242b-4fca-a32c-a5b582753941
+                stepCounter: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+            transform: "cast( date_trunc('day', \"INT_COMBINE_FIELD_HISTORY\".\"UPDATED_AT\") AS date) "
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INT_COMBINE_FIELD_HISTORY: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: INT
+            nodeName: INT_COMBINE_FIELD_HISTORY
+        join:
+          joinCondition: |
+            FROM {{ ref('INT', 'INT_COMBINE_FIELD_HISTORY') }} "INT_COMBINE_FIELD_HISTORY"
+            WHERE  (lower("INT_COMBINE_FIELD_HISTORY"."FIELD_ID") = 'status'
+            OR     lower("INT_COMBINE_FIELD_HISTORY"."FIELD_NAME") IN ('sprint') )
+        name: INT_LIMIT_TO_RELEVANT_FIELDS
+        noLinkRefs: []
+  name: INT_LIMIT_TO_RELEVANT_FIELDS
+  overrideSQL: false
+  schema: ""
+  sqlType: BNT112:::188
+  type: sql
+  version: 1
+type: Node

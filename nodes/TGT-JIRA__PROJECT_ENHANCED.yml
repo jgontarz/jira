@@ -465,26 +465,26 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__PROJECT_METRICS_ISSUES
-          - locationName: TGT
+          - locationName: STG
             nodeName: STG_JIRA__PROJECT
-          - locationName: TGT
+          - locationName: STG
             nodeName: STG_JIRA__USER
         join:
           joinCondition: |-
-            FROM {{ ref('TGT', 'STG_JIRA__PROJECT') }} "STG_JIRA__PROJECT"
-            LEFT JOIN {{ ref('TGT', 'STG_JIRA__USER') }} "STG_JIRA__USER"
+            FROM {{ ref('STG', 'STG_JIRA__PROJECT') }} "STG_JIRA__PROJECT"
+            LEFT JOIN {{ ref('STG', 'STG_JIRA__USER') }} "STG_JIRA__USER"
             ON "STG_JIRA__PROJECT"."PROJECT_LEAD_USER_ID" = "STG_JIRA__USER"."USER_ID"
-            LEFT JOIN {{ ref('TGT', 'INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES') }} "INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES') }} "INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES"
             ON "STG_JIRA__PROJECT"."PROJECT_ID" = "INT_JIRA__PROJECT_ENHANCED_AGG_EPICS_ISSUES"."PROJECT_ID"
-            LEFT JOIN {{ ref('TGT', 'INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS') }} "INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS') }} "INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS"
             ON "STG_JIRA__PROJECT"."PROJECT_ID" = "INT_JIRA__PROJECT_ENHANCED_AGG_COMPONENTS"."PROJECT_ID"
-            LEFT JOIN {{ ref('TGT', 'INT_JIRA__PROJECT_METRICS_ISSUES') }} "INT_JIRA__PROJECT_METRICS_ISSUES"
+            LEFT JOIN {{ ref('INT', 'INT_JIRA__PROJECT_METRICS_ISSUES') }} "INT_JIRA__PROJECT_METRICS_ISSUES"
             ON "STG_JIRA__PROJECT"."PROJECT_ID" = "INT_JIRA__PROJECT_METRICS_ISSUES"."PROJECT_ID"
         name: JIRA__PROJECT_ENHANCED
         noLinkRefs: []

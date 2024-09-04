@@ -122,14 +122,14 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: TGT
+          - locationName: INT
             nodeName: INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES
-          - locationName: TGT
+          - locationName: STG
             nodeName: STG_JIRA__STATUS
         join:
           joinCondition: |-
-            FROM {{ ref('TGT', 'INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES') }} "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"
-            LEFT JOIN {{ ref('TGT', 'STG_JIRA__STATUS') }} "STG_JIRA__STATUS"
+            FROM {{ ref('INT', 'INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES') }} "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"
+            LEFT JOIN {{ ref('STG', 'STG_JIRA__STATUS') }} "STG_JIRA__STATUS"
             ON "INT_JIRA__DAILY_ISSUE_FIELD_HISTORY_FILL_VALUES"."STATUS_ID" = "STG_JIRA__STATUS"."STATUS_ID"
         name: JIRA__DAILY_ISSUE_FIELD_HISTORY
         noLinkRefs: []
