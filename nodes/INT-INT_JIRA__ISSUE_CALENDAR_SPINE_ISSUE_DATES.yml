@@ -3,20 +3,29 @@ id: 686df945-37c9-4d40-a328-a0fbb8ce7b00
 name: INT_JIRA__ISSUE_CALENDAR_SPINE_ISSUE_DATES
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: INT
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -85,7 +94,7 @@ operation:
   name: INT_JIRA__ISSUE_CALENDAR_SPINE_ISSUE_DATES
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

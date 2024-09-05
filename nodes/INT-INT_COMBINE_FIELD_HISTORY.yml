@@ -3,24 +3,33 @@ id: 39f3bb6d-5dc7-4110-a4d8-1a84c66c0416
 name: INT_COMBINE_FIELD_HISTORY
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION ALL
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     orderbycolumn:
       items:
         - {}
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: false
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: true
   locationName: INT
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -162,7 +171,7 @@ operation:
   name: INT_COMBINE_FIELD_HISTORY
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

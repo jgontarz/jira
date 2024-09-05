@@ -4,16 +4,25 @@ name: STG_JIRA__STATUS_CATEGORY
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: Table of umbrella status categories.
   isMultisource: false
   locationName: STG
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -76,7 +85,7 @@ operation:
   name: STG_JIRA__STATUS_CATEGORY
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

@@ -4,21 +4,30 @@ name: JIRA__DAILY_ISSUE_FIELD_HISTORY
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     postSQL: null
     preSQL: null
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: false
     truncateBefore: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
-  description: "Each record represents a snapshot of an issue's selected fields (as specified in the issue_history_columns variable + sprint and status by default) on a given day. Each issue will have a record for every day in which it was open and/or being updated. For currently open issues, the latest date will be the current date, and for closed issues, this will be the last time the issue was resolved OR updated in any way (plus a configurable buffer afterward, set to a month by default). Note: this is an incremental model."
+  description: "Each record represents a snapshot of an issue\\'s selected fields (as specified in the issue_history_columns variable + sprint and status by default) on a given day. Each issue will have a record for every day in which it was open and/or being updated. For currently open issues, the latest date will be the current date, and for closed issues, this will be the last time the issue was resolved OR updated in any way (plus a configurable buffer afterward, set to a month by default). Note: this is an incremental model."
   isMultisource: false
   locationName: TGT
-  materializationType: table
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -136,7 +145,7 @@ operation:
   name: JIRA__DAILY_ISSUE_FIELD_HISTORY
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::204
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

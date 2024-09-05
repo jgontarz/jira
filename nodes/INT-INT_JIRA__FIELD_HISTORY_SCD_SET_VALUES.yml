@@ -3,21 +3,30 @@ id: 5ccc3974-3487-4355-a371-7a302a9e5046
 name: INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: INT
-  materializationType: table
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -170,7 +179,7 @@ operation:
   name: INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

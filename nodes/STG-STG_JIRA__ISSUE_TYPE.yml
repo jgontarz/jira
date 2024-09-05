@@ -4,16 +4,25 @@ name: STG_JIRA__ISSUE_TYPE
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: Table containing information about issue types. Issue types can have identical names in different projects, but they may have differing descriptions.
   isMultisource: false
   locationName: STG
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -104,7 +113,7 @@ operation:
   name: STG_JIRA__ISSUE_TYPE
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

@@ -4,16 +4,25 @@ name: INT_ISSUE_SPINE_GENERATOR
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: INT
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -44,7 +53,8 @@ operation:
         customSQL:
           customSQL: |
             {{ stage('Override Create SQL') }}
-            CREATE OR REPLACE VIEW {{ this }} AS (
+            CREATE
+            OR REPLACE DYNAMIC TABLE  {{ this }} TARGET_LAG = '60 Minutes' WAREHOUSE = dev_xs_wh REFRESH_MODE = AUTO INITIALIZE = ON_CREATE ("DATE_DAY") AS (
 
                 WITH p AS (
                     SELECT 0 AS generated_number 

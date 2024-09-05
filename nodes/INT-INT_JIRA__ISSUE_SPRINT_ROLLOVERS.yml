@@ -4,16 +4,25 @@ name: INT_JIRA__ISSUE_SPRINT_ROLLOVERS
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: true
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: INT
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -62,7 +71,7 @@ operation:
   name: INT_JIRA__ISSUE_SPRINT_ROLLOVERS
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

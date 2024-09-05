@@ -3,21 +3,30 @@ id: c605343b-6704-48c8-868d-d3ccd84d6d8b
 name: INT_JIRA__FIELD_HISTORY_SCD
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: "Slowly-changing-dimension model that fills values from differnt fields in the pivoted daily history model. Note: this is the singular field history-related model that is not incremental (materialized as table)"
   isMultisource: false
   locationName: INT
-  materializationType: table
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -133,7 +142,7 @@ operation:
   name: INT_JIRA__FIELD_HISTORY_SCD
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

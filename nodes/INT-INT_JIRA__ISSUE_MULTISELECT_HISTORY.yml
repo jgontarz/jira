@@ -3,24 +3,33 @@ id: b4f231f7-c2d3-4634-b4fb-ddc819f10078
 name: INT_JIRA__ISSUE_MULTISELECT_HISTORY
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     orderbycolumn:
       items:
         - {}
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: false
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to one value. This model serves to append the field_name to each record.
   isMultisource: false
   locationName: INT
-  materializationType: table
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -131,7 +140,7 @@ operation:
   name: INT_JIRA__ISSUE_MULTISELECT_HISTORY
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

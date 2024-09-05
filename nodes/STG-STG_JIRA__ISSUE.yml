@@ -4,16 +4,25 @@ name: STG_JIRA__ISSUE
 operation:
   config:
     OverrideSQLCreate: false
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: UNION
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
-  description: Table of all issues in your organization's Jira (captures soft deletes).
+  description: Table of all issues in your organization Jira (captures soft deletes).
   isMultisource: false
   locationName: STG
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -373,7 +382,7 @@ operation:
   name: STG_JIRA__ISSUE
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node

@@ -3,21 +3,30 @@ id: 23e6b66a-fd20-4a8e-b20b-edf3c573ff20
 name: INT_JIRA__ISSUE_FIELD_HISTORY
 operation:
   config:
+    clusterKey: false
+    downstreamOption: false
     groupByAll: false
+    initialize: ON_CREATE
     insertStrategy: INSERT
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
     orderby: false
     postSQL: ""
     preSQL: ""
+    refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
+    warehouseName: dev_xs_wh
   database: ""
   deployEnabled: true
   description: Table of every value that each custom non-array (not multiselect) field has been set to. This model serves to append the field_name to each record.
   isMultisource: false
   locationName: INT
-  materializationType: view
+  materializationType: dynamic table
   metadata:
     appliedNodeTests: []
     columns:
@@ -114,7 +123,7 @@ operation:
   name: INT_JIRA__ISSUE_FIELD_HISTORY
   overrideSQL: false
   schema: ""
-  sqlType: BNT112:::188
+  sqlType: DT113:::156
   type: sql
   version: 1
 type: Node
