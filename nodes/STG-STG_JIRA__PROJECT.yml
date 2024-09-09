@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of all projects in your organization.
@@ -143,7 +142,7 @@ operation:
           columnCounter: 60680784-644b-4dcd-b8da-3e18c305ae04
           stepCounter: 2c27277d-11a8-4c3f-ba9f-9f91d503b77b
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true
@@ -151,7 +150,7 @@ operation:
           - columnReferences:
               - columnCounter: 899d66dc-c4a0-4777-a7da-e71459831487
                 stepCounter: afc26601-cc59-4e18-94ee-49e106e17f4a
-            transform: ""
+            transform: "\"STG_JIRA__PROJECT_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

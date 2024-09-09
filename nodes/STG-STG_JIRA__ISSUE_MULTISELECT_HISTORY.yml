@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to one value.
@@ -129,7 +128,7 @@ operation:
           columnCounter: 086c0b4c-c66b-44bc-bb4d-1cf3a15bbcff
           stepCounter: 9113520e-78c8-40ae-80c0-04dd55e112ed
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true
@@ -137,7 +136,7 @@ operation:
           - columnReferences:
               - columnCounter: a6a80a98-2b48-4aaf-a8b7-c02944cf01b9
                 stepCounter: 2e38816a-ca78-4589-b7ea-c1031a4ee8c4
-            transform: ""
+            transform: "\"STG_JIRA__ISSUE_MULTISELECT_HISTORY_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

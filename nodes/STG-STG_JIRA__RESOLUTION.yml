@@ -5,7 +5,7 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
@@ -16,7 +16,7 @@ operation:
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table storing the types of resolutions used by your organization.
@@ -73,7 +73,7 @@ operation:
           columnCounter: 6ef82fb6-a5c5-4bec-9530-a93a65cadd59
           stepCounter: 00001522-0b30-4d6f-b1f4-e3cca2ccbf46
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true
@@ -81,7 +81,7 @@ operation:
           - columnReferences:
               - columnCounter: 1cfbf084-52e9-455c-bec3-a896bb94c8f1
                 stepCounter: b118f530-7d41-461e-b291-610df9f0b3d4
-            transform: ""
+            transform: "\"STG_JIRA__RESOLUTION_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

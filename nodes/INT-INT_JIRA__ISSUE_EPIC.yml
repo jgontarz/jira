@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table associating classic-project issues with the epics they are linked to. This is necessary because issue-epic relationships are represented differently in next-gen vs classic projects. In next-gen projects, epics are stored as an issue''s parent issue, whereas in classic projects epics are captured in the ''epic link'' field in issue_field_history. Next-gen issues will not appear in this table.

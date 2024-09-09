@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of all options related to custom fields.
@@ -81,7 +80,7 @@ operation:
           - columnReferences:
               - columnCounter: e837abd6-ccec-4288-9aca-39eeb39b62fd
                 stepCounter: 35a72e92-0664-4c20-a586-a45e8aef424d
-            transform: ""
+            transform: "\"STG_JIRA__FIELD_OPTION_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

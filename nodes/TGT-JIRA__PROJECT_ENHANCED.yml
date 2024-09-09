@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of projects enriched with data about its lead, epics, components, and volume and velocity of worktime.
@@ -131,7 +130,7 @@ operation:
           columnCounter: f3a13726-afb1-4890-a3dc-212cff57bf92
           stepCounter: 99cac762-ccb1-4a79-9058-38e353ebf9fe
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true

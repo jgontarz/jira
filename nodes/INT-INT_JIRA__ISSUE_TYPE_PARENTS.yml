@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table relating issues with data regarding their parent issues (which may be epics). Contains all columns present in stg_jira__issue.
@@ -327,7 +326,7 @@ operation:
           columnCounter: 748f233d-4b19-4ee0-9409-1be82a0bb5cf
           stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: Timestamp of when the issue was last updated in some way.
         name: UPDATED_AT
         nullable: true
@@ -355,7 +354,7 @@ operation:
           columnCounter: ac6418b0-3b90-42e3-b437-1d97b7f3d49c
           stepCounter: b704d14b-acb4-4cb6-83f2-ade73242bcc6
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true

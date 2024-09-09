@@ -4,14 +4,13 @@ name: INT_JIRA__ISSUE_MULTISELECT_HISTORY
 operation:
   config:
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     orderby: false
     orderbycolumn:
       items:
@@ -23,7 +22,7 @@ operation:
     selectDistinct: false
     testsEnabled: false
     truncateBefore: true
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to one value. This model serves to append the field_name to each record.

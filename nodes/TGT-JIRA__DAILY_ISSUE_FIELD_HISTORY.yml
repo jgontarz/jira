@@ -5,14 +5,13 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     orderby: false
     postSQL: null
     preSQL: null
@@ -21,7 +20,7 @@ operation:
     selectDistinct: false
     testsEnabled: false
     truncateBefore: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: "Each record represents a snapshot of an issue\\'s selected fields (as specified in the issue_history_columns variable + sprint and status by default) on a given day. Each issue will have a record for every day in which it was open and/or being updated. For currently open issues, the latest date will be the current date, and for closed issues, this will be the last time the issue was resolved OR updated in any way (plus a configurable buffer afterward, set to a month by default). Note: this is an incremental model."

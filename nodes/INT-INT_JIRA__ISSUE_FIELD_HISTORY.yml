@@ -4,14 +4,13 @@ name: INT_JIRA__ISSUE_FIELD_HISTORY
 operation:
   config:
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     orderby: false
     postSQL: ""
     preSQL: ""
@@ -20,7 +19,7 @@ operation:
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of every value that each custom non-array (not multiselect) field has been set to. This model serves to append the field_name to each record.

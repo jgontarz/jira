@@ -4,21 +4,20 @@ name: STG_JIRA__ISSUE_LINK_TMP
 operation:
   config:
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     postSQL: ""
     preSQL: ""
     refresh_mode: AUTO
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: ""

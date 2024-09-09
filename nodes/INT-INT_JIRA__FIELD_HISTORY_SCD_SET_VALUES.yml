@@ -4,14 +4,13 @@ name: INT_JIRA__FIELD_HISTORY_SCD_SET_VALUES
 operation:
   config:
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     orderby: false
     postSQL: ""
     preSQL: ""
@@ -20,7 +19,7 @@ operation:
     selectDistinct: false
     testsEnabled: true
     truncateBefore: true
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: ""

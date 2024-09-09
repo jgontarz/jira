@@ -1,0 +1,113 @@
+fileVersion: 1
+id: 39663a4f-2e67-4666-a4a3-81a6bdb27cd8
+name: PIPELINE_SYNCED
+operation:
+  config:
+    clusterKey: false
+    clusterKeyConfig:
+      items:
+        - {}
+    clusterKeyConfigExpressions:
+      items:
+        - {}
+    clusterKeyExpressions: false
+    downstreamOption: false
+    groupByAll: false
+    initialize: ON_CREATE
+    insertStrategy: UNION ALL
+    lagSpecification:
+      items:
+        - lagPeriod: Minutes
+          lagValue: 60
+    refresh_mode: AUTO
+    selectDistinct: false
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
+  database: ""
+  deployEnabled: true
+  description: Final Dynamic Table to control LAG of Dynamic Table DAG.
+  isMultisource: true
+  locationName: TGT
+  materializationType: dynamic table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e4709a1-54fa-42c4-bdc5-da8aadcd8d83
+          stepCounter: 39663a4f-2e67-4666-a4a3-81a6bdb27cd8
+        config: {}
+        dataType: VARCHAR(256)
+        description: Email associated with the user acccount.
+        name: SOURCE_NODE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'JIRA__USER_ENHANCED'"
+          - columnReferences: []
+            transform: "'JIRA__PROJECT_ENHANCED'"
+          - columnReferences: []
+            transform: "'STG_JIRA__ISSUE_LINK'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fce5056c-3294-4801-a30c-1d601c7db037
+          stepCounter: 39663a4f-2e67-4666-a4a3-81a6bdb27cd8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b99e735e-8da2-465c-8440-6cef3d397033
+                stepCounter: 34e06ab1-bfdf-41d7-8fff-16b32a8f951f
+            transform: max("JIRA__USER_ENHANCED"."_FIVETRAN_SYNCED")
+          - columnReferences:
+              - columnCounter: f3a13726-afb1-4890-a3dc-212cff57bf92
+                stepCounter: 99cac762-ccb1-4a79-9058-38e353ebf9fe
+            transform: MAX("JIRA__PROJECT_ENHANCED"."_FIVETRAN_SYNCED")
+          - columnReferences:
+              - columnCounter: 724f3c01-a919-4d15-b9d3-a4325878b9f7
+                stepCounter: b37f57b9-104e-4d89-8d65-73d0b92533e8
+            transform: max("STG_JIRA__ISSUE_LINK"."_FIVETRAN_SYNCED")
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__USER_ENHANCED
+        join:
+          joinCondition: FROM {{ ref('TGT', 'JIRA__USER_ENHANCED') }} "JIRA__USER_ENHANCED"
+        name: JIRA__USER_ENHANCED
+        noLinkRefs: []
+      - aliases:
+          JIRA__PROJECT_ENHANCED: 99cac762-ccb1-4a79-9058-38e353ebf9fe
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: JIRA__PROJECT_ENHANCED
+        join:
+          joinCondition: FROM {{ ref('TGT', 'JIRA__PROJECT_ENHANCED') }} "JIRA__PROJECT_ENHANCED"
+        name: JIRA__PROJECT_ENHANCED
+        noLinkRefs: []
+      - aliases:
+          STG_JIRA__ISSUE_LINK: b37f57b9-104e-4d89-8d65-73d0b92533e8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: STG
+            nodeName: STG_JIRA__ISSUE_LINK
+        join:
+          joinCondition: FROM {{ ref('STG', 'STG_JIRA__ISSUE_LINK') }} "STG_JIRA__ISSUE_LINK"
+        name: STG_JIRA__ISSUE_LINK
+        noLinkRefs: []
+  name: PIPELINE_SYNCED
+  overrideSQL: false
+  schema: ""
+  sqlType: DT113:::156
+  type: sql
+  version: 1
+type: Node

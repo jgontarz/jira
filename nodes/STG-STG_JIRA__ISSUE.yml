@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table of all issues in your organization Jira (captures soft deletes).
@@ -356,7 +355,7 @@ operation:
           columnCounter: 63cf1ca0-dc51-4e13-8b27-ada5c19cea41
           stepCounter: 16d61a65-2f7f-4005-9573-af69feaaa7bd
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true
@@ -364,7 +363,7 @@ operation:
           - columnReferences:
               - columnCounter: c71ad1fd-81e3-4e5a-ba69-4664d8b38585
                 stepCounter: b4ad48e5-7a4b-40bf-bb82-930d4d944060
-            transform: ""
+            transform: "\"STG_JIRA__ISSUE_TMP\".\"_FIVETRAN_SYNCED\"::TIMESTAMP_NTZ"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

@@ -4,14 +4,13 @@ name: INT_MIN_ISSUE_DATE
 operation:
   config:
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: INSERT
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     orderby: false
     orderbycolumn:
       items:
@@ -23,7 +22,7 @@ operation:
     selectDistinct: false
     testsEnabled: false
     truncateBefore: true
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: ""

@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: Table relating issues to attributes about their assignees and reporters. Builds off of the int_jira__issue_type_parents model.
@@ -481,7 +480,7 @@ operation:
           columnCounter: cc869071-f9fc-4c8e-b475-df70841d6a3f
           stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: Timestamp of when the issue was last updated in some way.
         name: UPDATED_AT
         nullable: true
@@ -512,7 +511,7 @@ operation:
           columnCounter: 81f71a81-d7b4-4a74-8d9a-85dc3d43b082
           stepCounter: 9084b844-cd6c-44b2-978e-ea32a8f1e021
         config: {}
-        dataType: TIMESTAMP_TZ(9)
+        dataType: TIMESTAMP_NTZ
         description: ""
         name: _FIVETRAN_SYNCED
         nullable: true

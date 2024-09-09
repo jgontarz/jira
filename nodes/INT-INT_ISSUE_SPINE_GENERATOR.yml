@@ -5,18 +5,17 @@ operation:
   config:
     OverrideSQLCreate: false
     clusterKey: false
-    downstreamOption: false
+    downstreamOption: true
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION
     lagSpecification:
       items:
-        - lagPeriod: Minutes
-          lagValue: 60
+        - {}
     refresh_mode: AUTO
     secureoption: false
     selectDistinct: false
-    warehouseName: dev_xs_wh
+    warehouseName: "{{ parameters.jiraPipelineWarehouse }}"
   database: ""
   deployEnabled: true
   description: ""
@@ -52,9 +51,34 @@ operation:
           INT_MIN_ISSUE_DATE: 568ca083-c162-49ed-b052-6d4ec4164b0f
         customSQL:
           customSQL: |
+            {# When pipeline was created there was no 'Create SQL' option in the node #}
+            {# To get around this, 'Create SQL' is used in a view node to generate the Dynamic Table #}
+            {# To change configs, switch to a 'Dynamic Table Work' node type and select the required configs #}
+            {# After changing configs switch back to a 'View' Base Node Type #}
+            {# Will address this in a later version of the 'Dynamic Table Work' node #}
+
+            {# Setting warehouse parameter #}
+            {% if parameters.targetDynamicTableWarehouse == 'DEV ENVIRONMENT' %}
+                {% set dynamicTableWarehouse = config.warehouseName %}
+            {% else %}
+                {% set dynamicTableWarehouse = parameters.targetDynamicTableWarehouse %}
+            {% endif %}
+
+            {# Downstream Option or Lag Specification#}
+            {% if config.downstreamOption == true %}
+                {% set dynamicTableLagSpecification = 'DOWNSTREAM' %}
+            {% else %}
+                {% set dynamicTableLagValue = config.lagSpecification.get('items') | map(attribute='lagValue') | first %}
+                {% set dynamicTableLagValuePeriod = config.lagSpecification.get('items') | map(attribute='lagPeriod') | first %}
+
+                {% set dynamicTableLagSpecification = dynamicTableLagValue ~ ' ' ~ dynamicTableLagValuePeriod %}
+            {% endif %}
+
+
+
             {{ stage('Override Create SQL') }}
             CREATE
-            OR REPLACE DYNAMIC TABLE  {{ this }} TARGET_LAG = '60 Minutes' WAREHOUSE = dev_xs_wh REFRESH_MODE = AUTO INITIALIZE = ON_CREATE ("DATE_DAY") AS (
+            OR REPLACE DYNAMIC TABLE  {{ this }} TARGET_LAG = {{ dynamicTableLagSpecification }} WAREHOUSE = {{ dynamicTableWarehouse }} REFRESH_MODE = AUTO INITIALIZE = ON_CREATE ("DATE_DAY") AS (
 
                 WITH p AS (
                     SELECT 0 AS generated_number 
