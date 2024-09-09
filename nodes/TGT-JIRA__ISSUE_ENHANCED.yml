@@ -37,7 +37,7 @@ operation:
           stepCounter: daaa0244-7a3b-413b-998c-a9101e6595e6
         config: {}
         dataType: NUMBER(38,0)
-        description: Unique ID of the issue.
+        description: Unique ID of the parent issue.
         name: PARENT_ISSUE_ID
         nullable: true
         sourceColumnReferences:

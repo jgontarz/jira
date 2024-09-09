@@ -1,0 +1,7 @@
+excludeSelector: ""
+fileVersion: 1
+id: "32"
+includeSelector: "{ location: TGT name: JIRA__DAILY_ISSUE_FIELD_HISTORY }"
+name: JIRA__DAILY_ISSUE_FIELD_HISTORY_LOAD
+type: Job
+version: 2
