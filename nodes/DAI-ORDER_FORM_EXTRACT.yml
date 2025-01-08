@@ -1,0 +1,77 @@
+fileVersion: 1
+id: cd4e2663-1cd1-495d-a3cb-d7532404e4d7
+name: ORDER_FORM_EXTRACT
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: DAI
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e9e860e-6808-4910-b825-f7aec09a559a
+          stepCounter: cd4e2663-1cd1-495d-a3cb-d7532404e4d7
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PRESIGNED_URL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f742fde-15ba-4ead-9c43-10a33244d0e8
+          stepCounter: cd4e2663-1cd1-495d-a3cb-d7532404e4d7
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: DOCUMENT_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 301f097c-1637-4d8f-af34-826e183bd5de
+          stepCounter: cd4e2663-1cd1-495d-a3cb-d7532404e4d7
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: ORDER_DATA
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('DAI', 'ORDER_FORM_EXTRACT') }}
+  name: ORDER_FORM_EXTRACT
+  schema: ""
+  sqlType: Source
+  table: ORDER_FORM_EXTRACT
+  type: sourceInput
+  version: 1
+type: Node

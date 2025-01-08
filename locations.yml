@@ -1,0 +1,6 @@
+defaultStorageMapping: DAI
+fileVersion: 1
+locations:
+  - DAI
+  - SRC
+  - TGT

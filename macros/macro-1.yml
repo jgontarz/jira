@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "1"
+macroString: |-
+  {%- macro expect_column_to_exist(tablename, columnName) -%}
+      {%- set tablename = tablename-%}
+      {%- set columnName = columnName-%}
+      {%- set columnId = columns | selectattr('name','equalto',columnName) | map(attribute='id') | first -%}
+      select '{{columnName}}' where '{{columnId}}' = ''
+  {%- endmacro %}
+name: macro
+type: Macro

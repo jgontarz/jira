@@ -1,0 +1,15 @@
+fileVersion: 1
+id: "169"
+name: Order Signer Line Detail
+steps:
+  - 06f2c6a9-0978-49cb-9d16-74a2909edb77
+  - 2d36ce73-6bdf-448a-9092-1fbb3bb093e9
+  - 3305b9af-338d-4ac8-9540-b8acce6b1354
+  - 3670d15f-bbeb-495b-925a-ad213b0127d3
+  - 42d29c5c-c053-44cd-acd4-11a116f56bb2
+  - 6a2f9172-1edf-4bdd-b82d-52909ad2fab6
+  - 93b4c2d8-717c-4b25-9e49-fd3451129b16
+  - cd4e2663-1cd1-495d-a3cb-d7532404e4d7
+  - ef3272c7-2bd2-42a7-908d-62339ef343f9
+  - fb0ea805-3813-45e6-8f75-e545cc670e35
+type: Subgraph
