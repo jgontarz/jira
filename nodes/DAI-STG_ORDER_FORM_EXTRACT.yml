@@ -1253,7 +1253,15 @@ operation:
       - aliases:
           ORDER_FORM_EXTRACT: cd4e2663-1cd1-495d-a3cb-d7532404e4d7
         customSQL:
-          customSQL: ""
+          customSQL: |-
+            {{ stage('Override Create SQL') }}
+            	CREATE OR REPLACE VIEW {{ ref('DAI', 'STG_ORDER_FORM_EXTRACT')}} AS (
+            		SELECT 
+             "PRESIGNED_URL" AS "PRESIGNED_URL",
+             "DOCUMENT_NAME" AS "DOCUMENT_NAME",
+             "ORDER_DATA" AS "ORDER_DATA"
+             FROM {{ ref('DAI', 'ORDER_FORM_EXTRACT') }}
+            	)
         dependencies:
           - locationName: DAI
             nodeName: ORDER_FORM_EXTRACT

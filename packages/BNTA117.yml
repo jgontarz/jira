@@ -1,28 +1,25 @@
 config:
   entities:
     nodeTypes:
-      "173":
+      "179":
         defaultStorageLocation: null
         isDisabled: false
-      "188":
+      "388":
         defaultStorageLocation: null
         isDisabled: false
-      "194":
+      "389":
         defaultStorageLocation: null
         isDisabled: false
-      "204":
+      "390":
         defaultStorageLocation: null
         isDisabled: false
-      "205":
-        defaultStorageLocation: null
-        isDisabled: false
-      "248":
+      "391":
         defaultStorageLocation: null
         isDisabled: false
   packageVariables: ""
 fileVersion: 1
-id: "@coalesce/base-node-types"
-name: BNT112
-packageID: "@coalesce/base-node-types"
-releaseID: 360da3b1-79c1-4d68-8847-90302f2a7b61
+id: "@coalesce/base-node-types-advanced-deploy"
+name: BNTA117
+packageID: "@coalesce/base-node-types-advanced-deploy"
+releaseID: 5ff1215e-84f0-4d46-944c-d2c211e6f52e
 type: Package
